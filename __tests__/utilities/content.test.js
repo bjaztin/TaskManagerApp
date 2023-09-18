@@ -16,7 +16,7 @@ describe("Content component", () => {
     const apiContent = await getContent();
 
     expect(global.fetch).toHaveBeenCalledWith(
-     "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLgdxvG3UlbicDUrlxlbsrTY_gfY0Wyx2a&key=AIzaSyDEjpzg6DdhkX5j9MnScPHOfKH3_YzfVWQ"
+     "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLgdxvG3UlbicDUrlxlbsrTY_gfY0Wyx2a&key=AIzaSyBsUhTk0nrXdJPItqOYLwD16JtozFkJJ18"
     );
 
     expect(apiContent).toEqual(mockResponse.items);
