@@ -1,0 +1,52 @@
+0377fed69ad420e4d70a11075000a67a
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isSharedValue = exports.getRelativeCoords = void 0;
+var _NativeMethods = require("./NativeMethods");
+var _worklet_9794734974808_init_data = {
+  code: "function getRelativeCoords(parentRef, absoluteX, absoluteY) {\n  const {\n    measure\n  } = this._closure;\n  const parentCoords = measure(parentRef);\n  if (parentCoords === null) {\n    return null;\n  }\n  return {\n    x: absoluteX - parentCoords.x,\n    y: absoluteY - parentCoords.y\n  };\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/utils.js",
+  sourceMap: "{\"version\":3,\"names\":[\"getRelativeCoords\",\"parentRef\",\"absoluteX\",\"absoluteY\",\"measure\",\"_closure\",\"parentCoords\",\"x\",\"y\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/utils.js\"],\"mappings\":\"AAKO,SAAAA,iBAASA,CAAkBC,SAAA,EAASC,SAAE,EAASC,SAAE,EAAS;EAAA;IAAAC;EAAA,SAAAC,QAAA;EAG/D,MAAMC,YAAY,GAAGF,OAAO,CAACH,SAAS,CAAC;EACvC,IAAIK,YAAY,KAAK,IAAI,EAAE;IACzB,OAAO,IAAI;EACb;EACA,OAAO;IACLC,CAAC,EAAEL,SAAS,GAAGI,YAAY,CAACC,CAAC;IAC7BC,CAAC,EAAEL,SAAS,GAAGG,YAAY,CAACE;EAC9B,CAAC;AACH\"}"
+};
+var getRelativeCoords = function () {
+  var _e = [new global.Error(), -2, -27];
+  var _f = function _f(parentRef, absoluteX, absoluteY) {
+    var parentCoords = (0, _NativeMethods.measure)(parentRef);
+    if (parentCoords === null) {
+      return null;
+    }
+    return {
+      x: absoluteX - parentCoords.x,
+      y: absoluteY - parentCoords.y
+    };
+  };
+  _f._closure = {
+    measure: _NativeMethods.measure
+  };
+  _f.__initData = _worklet_9794734974808_init_data;
+  _f.__workletHash = 9794734974808;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+exports.getRelativeCoords = getRelativeCoords;
+var _worklet_7163594232254_init_data = {
+  code: "function isSharedValue(value) {\n  return (value === null || value === void 0 ? void 0 : value._isReanimatedSharedValue) === true;\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/utils.js",
+  sourceMap: "{\"version\":3,\"names\":[\"isSharedValue\",\"value\",\"_isReanimatedSharedValue\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/utils.js\"],\"mappings\":\"AAiBO,SAAAA,aAASA,CAAcC,KAAA,EAAK;EAGjC,OAAO,CAACA,KAAK,KAAK,IAAI,IAAIA,KAAK,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,KAAK,CAACC,wBAAwB,MAAM,IAAI;AAChG\"}"
+};
+var isSharedValue = function () {
+  var _e = [new global.Error(), 1, -27];
+  var _f = function _f(value) {
+    return (value === null || value === void 0 ? void 0 : value._isReanimatedSharedValue) === true;
+  };
+  _f._closure = {};
+  _f.__initData = _worklet_7163594232254_init_data;
+  _f.__workletHash = 7163594232254;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+exports.isSharedValue = isSharedValue;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfTmF0aXZlTWV0aG9kcyIsInJlcXVpcmUiLCJfd29ya2xldF85Nzk0NzM0OTc0ODA4X2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsImdldFJlbGF0aXZlQ29vcmRzIiwiX2UiLCJnbG9iYWwiLCJFcnJvciIsIl9mIiwicGFyZW50UmVmIiwiYWJzb2x1dGVYIiwiYWJzb2x1dGVZIiwicGFyZW50Q29vcmRzIiwibWVhc3VyZSIsIngiLCJ5IiwiX2Nsb3N1cmUiLCJfX2luaXREYXRhIiwiX193b3JrbGV0SGFzaCIsIl9fc3RhY2tEZXRhaWxzIiwiX192ZXJzaW9uIiwiZXhwb3J0cyIsIl93b3JrbGV0XzcxNjM1OTQyMzIyNTRfaW5pdF9kYXRhIiwiaXNTaGFyZWRWYWx1ZSIsInZhbHVlIiwiX2lzUmVhbmltYXRlZFNoYXJlZFZhbHVlIl0sInNvdXJjZXMiOlsidXRpbHMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50IH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgbWVhc3VyZSB9IGZyb20gJy4vTmF0aXZlTWV0aG9kcyc7XG5pbXBvcnQgeyBSZWZPYmplY3RGdW5jdGlvbiB9IGZyb20gJy4vaG9vay9jb21tb25UeXBlcyc7XG5pbXBvcnQgeyBTaGFyZWRWYWx1ZSB9IGZyb20gJy4vY29tbW9uVHlwZXMnO1xuXG5leHBvcnQgaW50ZXJmYWNlIENvbXBvbmVudENvb3JkcyB7XG4gIHg6IG51bWJlcjtcbiAgeTogbnVtYmVyO1xufVxuXG4vKipcbiAqIEdpdmVuIGFuIGFic29sdXRlIHBvc2l0aW9uIGFuZCBhIGNvbXBvbmVudCByZWYsIHJldHVybnMgdGhlIHJlbGF0aXZlXG4gKiBwb3NpdGlvbiBpbiB0aGUgY29tcG9uZW50J3MgbG9jYWwgY29vcmRpbmF0ZSBzcGFjZS5cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGdldFJlbGF0aXZlQ29vcmRzKFxuICBwYXJlbnRSZWY6IFJlZk9iamVjdEZ1bmN0aW9uPENvbXBvbmVudD4sXG4gIGFic29sdXRlWDogbnVtYmVyLFxuICBhYnNvbHV0ZVk6IG51bWJlclxuKTogQ29tcG9uZW50Q29vcmRzIHwgbnVsbCB7XG4gICd3b3JrbGV0JztcbiAgY29uc3QgcGFyZW50Q29vcmRzID0gbWVhc3VyZShwYXJlbnRSZWYpO1xuICBpZiAocGFyZW50Q29vcmRzID09PSBudWxsKSB7XG4gICAgcmV0dXJuIG51bGw7XG4gIH1cbiAgcmV0dXJuIHtcbiAgICB4OiBhYnNvbHV0ZVggLSBwYXJlbnRDb29yZHMueCxcbiAgICB5OiBhYnNvbHV0ZVkgLSBwYXJlbnRDb29yZHMueSxcbiAgfTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIGlzU2hhcmVkVmFsdWU8VD4odmFsdWU6IGFueSk6IHZhbHVlIGlzIFNoYXJlZFZhbHVlPFQ+IHtcbiAgJ3dvcmtsZXQnO1xuICByZXR1cm4gdmFsdWU/Ll9pc1JlYW5pbWF0ZWRTaGFyZWRWYWx1ZSA9PT0gdHJ1ZTtcbn1cbiJdLCJtYXBwaW5ncyI6Ijs7OztBQUNBLElBQUFBLGNBQUEsR0FBQUMsT0FBQTtBQUF5QyxJQUFBQyxnQ0FBQTtFQUFBQyxJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtBQUFBO0FBQUEsSUFhekJDLGlCQUFpQjtFQUFBLElBQUFDLEVBQUEsUUFBQUMsTUFBQSxDQUFBQyxLQUFBO0VBQUEsSUFBQUMsRUFBQSxZQUFBQSxHQUMvQkMsU0FBdUMsRUFDdkNDLFNBQWlCLEVBQ2pCQyxTQUFpQixFQUNPO0lBRXhCLElBQU1DLFlBQVksR0FBRyxJQUFBQyxzQkFBTyxFQUFDSixTQUFTLENBQUM7SUFDdkMsSUFBSUcsWUFBWSxLQUFLLElBQUksRUFBRTtNQUN6QixPQUFPLElBQUk7SUFDYjtJQUNBLE9BQU87TUFDTEUsQ0FBQyxFQUFFSixTQUFTLEdBQUdFLFlBQVksQ0FBQ0UsQ0FBQztNQUM3QkMsQ0FBQyxFQUFFSixTQUFTLEdBQUdDLFlBQVksQ0FBQ0c7SUFDOUIsQ0FBQztFQUNIO0VBQUFQLEVBQUEsQ0FBQVEsUUFBQTtJQUFBSCxPQUFBLEVBbEJBQTtFQUFBO0VBQUFMLEVBQUEsQ0FBQVMsVUFBQSxHQUFBakIsZ0NBQUE7RUFBQVEsRUFBQSxDQUFBVSxhQUFBO0VBQUFWLEVBQUEsQ0FBQVcsY0FBQSxHQUFBZCxFQUFBO0VBQUFHLEVBQUEsQ0FBQVksU0FBQTtFQUFBLE9BQUFaLEVBQUE7QUFBQTtBQUFBYSxPQUFBLENBQUFqQixpQkFBQSxHQUFBQSxpQkFBQTtBQUFBLElBQUFrQixnQ0FBQTtFQUFBckIsSUFBQTtFQUFBQyxRQUFBO0VBQUFDLFNBQUE7QUFBQTtBQUFBLElBb0JnQm9CLGFBQWE7RUFBQSxJQUFBbEIsRUFBQSxRQUFBQyxNQUFBLENBQUFDLEtBQUE7RUFBQSxJQUFBQyxFQUFBLFlBQUFBLEdBQUlnQixLQUFVLEVBQTJCO0lBRXBFLE9BQU8sQ0FBQUEsS0FBSyxhQUFMQSxLQUFLLHVCQUFMQSxLQUFLLENBQUVDLHdCQUF3QixNQUFLLElBQUk7RUFDakQ7RUFBQWpCLEVBQUEsQ0FBQVEsUUFBQTtFQUFBUixFQUFBLENBQUFTLFVBQUEsR0FBQUssZ0NBQUE7RUFBQWQsRUFBQSxDQUFBVSxhQUFBO0VBQUFWLEVBQUEsQ0FBQVcsY0FBQSxHQUFBZCxFQUFBO0VBQUFHLEVBQUEsQ0FBQVksU0FBQTtFQUFBLE9BQUFaLEVBQUE7QUFBQTtBQUFBYSxPQUFBLENBQUFFLGFBQUEsR0FBQUEsYUFBQSJ9

@@ -1,0 +1,77 @@
+51d6d32171963314aaf0afff922295a1
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "BottomTab", {
+  enumerable: true,
+  get: function get() {
+    return _BottomTab.default;
+  }
+});
+Object.defineProperty(exports, "LogIn", {
+  enumerable: true,
+  get: function get() {
+    return _LogIn.default;
+  }
+});
+Object.defineProperty(exports, "OnBoarding", {
+  enumerable: true,
+  get: function get() {
+    return _OnBoarding.default;
+  }
+});
+Object.defineProperty(exports, "Register", {
+  enumerable: true,
+  get: function get() {
+    return _Register.default;
+  }
+});
+Object.defineProperty(exports, "Splash", {
+  enumerable: true,
+  get: function get() {
+    return _Splash.default;
+  }
+});
+Object.defineProperty(exports, "VideoPreviewScreen", {
+  enumerable: true,
+  get: function get() {
+    return _VideoPreviewScreen.default;
+  }
+});
+var _Splash = _interopRequireDefault(require("./Splash"));
+var _OnBoarding = _interopRequireDefault(require("./OnBoarding"));
+var _Register = _interopRequireDefault(require("./Register"));
+var _BottomTab = _interopRequireDefault(require("./BottomTab"));
+var _LogIn = _interopRequireDefault(require("./LogIn"));
+var _VideoPreviewScreen = _interopRequireDefault(require("./VideoPreviewScreen"));
+function cov_21vpbim233() {
+  var path = "/Users/bjaztin/Desktop/taskManagerApp/src/screens/index.js";
+  var hash = "647548f6c72b9a5a18a5b793616bb80db3e156fb";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/bjaztin/Desktop/taskManagerApp/src/screens/index.js",
+    statementMap: {},
+    fnMap: {},
+    branchMap: {},
+    s: {},
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "647548f6c72b9a5a18a5b793616bb80db3e156fb"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_21vpbim233 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_21vpbim233();
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfU3BsYXNoIiwiX2ludGVyb3BSZXF1aXJlRGVmYXVsdCIsInJlcXVpcmUiLCJfT25Cb2FyZGluZyIsIl9SZWdpc3RlciIsIl9Cb3R0b21UYWIiLCJfTG9nSW4iLCJfVmlkZW9QcmV2aWV3U2NyZWVuIiwiY292XzIxdnBiaW0yMzMiLCJwYXRoIiwiaGFzaCIsImdsb2JhbCIsIkZ1bmN0aW9uIiwiZ2N2IiwiY292ZXJhZ2VEYXRhIiwic3RhdGVtZW50TWFwIiwiZm5NYXAiLCJicmFuY2hNYXAiLCJzIiwiZiIsImIiLCJfY292ZXJhZ2VTY2hlbWEiLCJjb3ZlcmFnZSIsImFjdHVhbENvdmVyYWdlIl0sInNvdXJjZXMiOlsiaW5kZXguanMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHtkZWZhdWx0IGFzIFNwbGFzaH0gZnJvbSAnLi9TcGxhc2gnO1xuZXhwb3J0IHtkZWZhdWx0IGFzIE9uQm9hcmRpbmd9ZnJvbSAnLi9PbkJvYXJkaW5nJztcbmV4cG9ydCB7ZGVmYXVsdCBhcyBSZWdpc3Rlcn0gZnJvbSAnLi9SZWdpc3Rlcic7XG5leHBvcnQge2RlZmF1bHQgYXMgQm90dG9tVGFifSBmcm9tICcuL0JvdHRvbVRhYic7XG5leHBvcnQge2RlZmF1bHQgYXMgTG9nSW59IGZyb20gJy4vTG9nSW4nO1xuZXhwb3J0IHtkZWZhdWx0IGFzIFZpZGVvUHJldmlld1NjcmVlbn0gZnJvbSAnLi9WaWRlb1ByZXZpZXdTY3JlZW4nO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBQUEsT0FBQSxHQUFBQyxzQkFBQSxDQUFBQyxPQUFBO0FBQ0EsSUFBQUMsV0FBQSxHQUFBRixzQkFBQSxDQUFBQyxPQUFBO0FBQ0EsSUFBQUUsU0FBQSxHQUFBSCxzQkFBQSxDQUFBQyxPQUFBO0FBQ0EsSUFBQUcsVUFBQSxHQUFBSixzQkFBQSxDQUFBQyxPQUFBO0FBQ0EsSUFBQUksTUFBQSxHQUFBTCxzQkFBQSxDQUFBQyxPQUFBO0FBQ0EsSUFBQUssbUJBQUEsR0FBQU4sc0JBQUEsQ0FBQUMsT0FBQTtBQUFtRSxTQUFBTSxlQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLElBQUE7RUFBQSxJQUFBQyxNQUFBLE9BQUFDLFFBQUE7RUFBQSxJQUFBQyxHQUFBO0VBQUEsSUFBQUMsWUFBQTtJQUFBTCxJQUFBO0lBQUFNLFlBQUE7SUFBQUMsS0FBQTtJQUFBQyxTQUFBO0lBQUFDLENBQUE7SUFBQUMsQ0FBQTtJQUFBQyxDQUFBO0lBQUFDLGVBQUE7SUFBQVgsSUFBQTtFQUFBO0VBQUEsSUFBQVksUUFBQSxHQUFBWCxNQUFBLENBQUFFLEdBQUEsTUFBQUYsTUFBQSxDQUFBRSxHQUFBO0VBQUEsS0FBQVMsUUFBQSxDQUFBYixJQUFBLEtBQUFhLFFBQUEsQ0FBQWIsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQVksUUFBQSxDQUFBYixJQUFBLElBQUFLLFlBQUE7RUFBQTtFQUFBLElBQUFTLGNBQUEsR0FBQUQsUUFBQSxDQUFBYixJQUFBO0VBQUE7SUFBQUQsY0FBQSxZQUFBQSxDQUFBO01BQUEsT0FBQWUsY0FBQTtJQUFBO0VBQUE7RUFBQSxPQUFBQSxjQUFBO0FBQUE7QUFBQWYsY0FBQSJ9

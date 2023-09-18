@@ -1,0 +1,316 @@
+a73f9db920c8813f74030b6af52483e2
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.interpolateSharableColor = exports.interpolateColor = exports.Extrapolate = exports.ColorSpace = void 0;
+exports.useInterpolateConfig = useInterpolateConfig;
+var _Colors = require("./Colors");
+var _core = require("./core");
+var _interpolation = require("./interpolation");
+var _useSharedValue = require("./hook/useSharedValue");
+var Extrapolate = {
+  EXTEND: 'extend',
+  CLAMP: 'clamp',
+  IDENTITY: 'identity'
+};
+exports.Extrapolate = Extrapolate;
+var _worklet_6906798994928_init_data = {
+  code: "function anonymous(value, inputRange, colors, options) {\n  const {\n    interpolate,\n    Extrapolate,\n    hsvToColor\n  } = this._closure;\n  let h = 0;\n  const {\n    useCorrectedHSVInterpolation = true\n  } = options;\n  if (useCorrectedHSVInterpolation) {\n    const correctedInputRange = [inputRange[0]];\n    const originalH = colors.h;\n    const correctedH = [originalH[0]];\n    for (let i = 1; i < originalH.length; ++i) {\n      const d = originalH[i] - originalH[i - 1];\n      if (originalH[i] > originalH[i - 1] && d > 0.5) {\n        correctedInputRange.push(inputRange[i]);\n        correctedInputRange.push(inputRange[i] + 0.00001);\n        correctedH.push(originalH[i] - 1);\n        correctedH.push(originalH[i]);\n      } else if (originalH[i] < originalH[i - 1] && d < -0.5) {\n        correctedInputRange.push(inputRange[i]);\n        correctedInputRange.push(inputRange[i] + 0.00001);\n        correctedH.push(originalH[i] + 1);\n        correctedH.push(originalH[i]);\n      } else {\n        correctedInputRange.push(inputRange[i]);\n        correctedH.push(originalH[i]);\n      }\n    }\n    h = (interpolate(value, correctedInputRange, correctedH, Extrapolate.CLAMP) + 1) % 1;\n  } else {\n    h = interpolate(value, inputRange, colors.h, Extrapolate.CLAMP);\n  }\n  const s = interpolate(value, inputRange, colors.s, Extrapolate.CLAMP);\n  const v = interpolate(value, inputRange, colors.v, Extrapolate.CLAMP);\n  const a = interpolate(value, inputRange, colors.a, Extrapolate.CLAMP);\n  return hsvToColor(h, s, v, a);\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"value\",\"inputRange\",\"colors\",\"options\",\"interpolate\",\"Extrapolate\",\"hsvToColor\",\"_closure\",\"h\",\"useCorrectedHSVInterpolation\",\"correctedInputRange\",\"originalH\",\"correctedH\",\"i\",\"length\",\"d\",\"push\",\"CLAMP\",\"s\",\"v\",\"a\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AAS6B,SAACA,SAAOA,CAAAC,KAAA,EAAAC,UAAkB,EAAEC,MAAA,EAAOC,OAAK;EAAA;IAAAC,WAAA;IAAAC,WAAA;IAAAC;EAAA,SAAAC,QAAA;EAGnE,IAAIC,CAAC,GAAG,CAAC;EACT,MAAM;IACJC,4BAA4B,GAAG;EACjC,CAAC,GAAGN,OAAO;EACX,IAAIM,4BAA4B,EAAE;IAKhC,MAAMC,mBAAmB,GAAG,CAACT,UAAU,CAAC,CAAC,CAAC,CAAC;IAC3C,MAAMU,SAAS,GAAGT,MAAM,CAACM,CAAC;IAC1B,MAAMI,UAAU,GAAG,CAACD,SAAS,CAAC,CAAC,CAAC,CAAC;IACjC,KAAK,IAAIE,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGF,SAAS,CAACG,MAAM,EAAE,EAAED,CAAC,EAAE;MACzC,MAAME,CAAC,GAAGJ,SAAS,CAACE,CAAC,CAAC,GAAGF,SAAS,CAACE,CAAC,GAAG,CAAC,CAAC;MACzC,IAAIF,SAAS,CAACE,CAAC,CAAC,GAAGF,SAAS,CAACE,CAAC,GAAG,CAAC,CAAC,IAAIE,CAAC,GAAG,GAAG,EAAE;QAC9CL,mBAAmB,CAACM,IAAI,CAACf,UAAU,CAACY,CAAC,CAAC,CAAC;QACvCH,mBAAmB,CAACM,IAAI,CAACf,UAAU,CAACY,CAAC,CAAC,GAAG,OAAO,CAAC;QACjDD,UAAU,CAACI,IAAI,CAACL,SAAS,CAACE,CAAC,CAAC,GAAG,CAAC,CAAC;QACjCD,UAAU,CAACI,IAAI,CAACL,SAAS,CAACE,CAAC,CAAC,CAAC;MAC/B,CAAC,MAAM,IAAIF,SAAS,CAACE,CAAC,CAAC,GAAGF,SAAS,CAACE,CAAC,GAAG,CAAC,CAAC,IAAIE,CAAC,GAAG,CAAC,GAAG,EAAE;QACtDL,mBAAmB,CAACM,IAAI,CAACf,UAAU,CAACY,CAAC,CAAC,CAAC;QACvCH,mBAAmB,CAACM,IAAI,CAACf,UAAU,CAACY,CAAC,CAAC,GAAG,OAAO,CAAC;QACjDD,UAAU,CAACI,IAAI,CAACL,SAAS,CAACE,CAAC,CAAC,GAAG,CAAC,CAAC;QACjCD,UAAU,CAACI,IAAI,CAACL,SAAS,CAACE,CAAC,CAAC,CAAC;MAC/B,CAAC,MAAM;QACLH,mBAAmB,CAACM,IAAI,CAACf,UAAU,CAACY,CAAC,CAAC,CAAC;QACvCD,UAAU,CAACI,IAAI,CAACL,SAAS,CAACE,CAAC,CAAC,CAAC;MAC/B;IACF;IACAL,CAAC,GAAG,CAACJ,WAAW,CAACJ,KAAK,EAAEU,mBAAmB,EAAEE,UAAU,EAAEP,WAAW,CAACY,KAAK,CAAC,GAAG,CAAC,IAAI,CAAC;EACtF,CAAC,MAAM;IACLT,CAAC,GAAGJ,WAAW,CAACJ,KAAK,EAAEC,UAAU,EAAEC,MAAM,CAACM,CAAC,EAAEH,WAAW,CAACY,KAAK,CAAC;EACjE;EACA,MAAMC,CAAC,GAAGd,WAAW,CAACJ,KAAK,EAAEC,UAAU,EAAEC,MAAM,CAACgB,CAAC,EAAEb,WAAW,CAACY,KAAK,CAAC;EACrE,MAAME,CAAC,GAAGf,WAAW,CAACJ,KAAK,EAAEC,UAAU,EAAEC,MAAM,CAACiB,CAAC,EAAEd,WAAW,CAACY,KAAK,CAAC;EACrE,MAAMG,CAAC,GAAGhB,WAAW,CAACJ,KAAK,EAAEC,UAAU,EAAEC,MAAM,CAACkB,CAAC,EAAEf,WAAW,CAACY,KAAK,CAAC;EACrE,OAAOX,UAAU,CAACE,CAAC,EAAEU,CAAC,EAAEC,CAAC,EAAEC,CAAC,CAAC;AAC/B\"}"
+};
+var interpolateColorsHSV = function () {
+  var _e = [new global.Error(), -4, -27];
+  var _f = function _f(value, inputRange, colors, options) {
+    var h = 0;
+    var _options$useCorrected = options.useCorrectedHSVInterpolation,
+      useCorrectedHSVInterpolation = _options$useCorrected === void 0 ? true : _options$useCorrected;
+    if (useCorrectedHSVInterpolation) {
+      var correctedInputRange = [inputRange[0]];
+      var originalH = colors.h;
+      var correctedH = [originalH[0]];
+      for (var i = 1; i < originalH.length; ++i) {
+        var d = originalH[i] - originalH[i - 1];
+        if (originalH[i] > originalH[i - 1] && d > 0.5) {
+          correctedInputRange.push(inputRange[i]);
+          correctedInputRange.push(inputRange[i] + 0.00001);
+          correctedH.push(originalH[i] - 1);
+          correctedH.push(originalH[i]);
+        } else if (originalH[i] < originalH[i - 1] && d < -0.5) {
+          correctedInputRange.push(inputRange[i]);
+          correctedInputRange.push(inputRange[i] + 0.00001);
+          correctedH.push(originalH[i] + 1);
+          correctedH.push(originalH[i]);
+        } else {
+          correctedInputRange.push(inputRange[i]);
+          correctedH.push(originalH[i]);
+        }
+      }
+      h = ((0, _interpolation.interpolate)(value, correctedInputRange, correctedH, Extrapolate.CLAMP) + 1) % 1;
+    } else {
+      h = (0, _interpolation.interpolate)(value, inputRange, colors.h, Extrapolate.CLAMP);
+    }
+    var s = (0, _interpolation.interpolate)(value, inputRange, colors.s, Extrapolate.CLAMP);
+    var v = (0, _interpolation.interpolate)(value, inputRange, colors.v, Extrapolate.CLAMP);
+    var a = (0, _interpolation.interpolate)(value, inputRange, colors.a, Extrapolate.CLAMP);
+    return (0, _Colors.hsvToColor)(h, s, v, a);
+  };
+  _f._closure = {
+    interpolate: _interpolation.interpolate,
+    Extrapolate: Extrapolate,
+    hsvToColor: _Colors.hsvToColor
+  };
+  _f.__initData = _worklet_6906798994928_init_data;
+  _f.__workletHash = 6906798994928;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_11271606745997_init_data = {
+  code: "function anonymous(x, gamma) {\n  return x.map(function (v) {\n    return Math.pow(v / 255, gamma);\n  });\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"x\",\"gamma\",\"map\",\"v\",\"Math\",\"pow\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AAkDsB,SAACA,SAAGA,CAAKC,CAAA,EAAKC,KAAA;EAGlC,OAAOD,CAAC,CAACE,GAAG,CAAC,UAAAC,CAAC;IAAA,OAAIC,IAAI,CAACC,GAAG,CAACF,CAAC,GAAG,GAAG,EAAEF,KAAK,CAAC;EAAA,EAAC;AAC7C\"}"
+};
+var toLinearSpace = function () {
+  var _e = [new global.Error(), 1, -27];
+  var _f = function _f(x, gamma) {
+    return x.map(function (v) {
+      return Math.pow(v / 255, gamma);
+    });
+  };
+  _f._closure = {};
+  _f.__initData = _worklet_11271606745997_init_data;
+  _f.__workletHash = 11271606745997;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_3404264460492_init_data = {
+  code: "function anonymous(x, gamma) {\n  return Math.round(Math.pow(x, 1 / gamma) * 255);\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"x\",\"gamma\",\"Math\",\"round\",\"pow\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AAuDqB,SAACA,SAAGA,CAAKC,CAAA,EAAKC,KAAA;EAGjC,OAAOC,IAAI,CAACC,KAAK,CAACD,IAAI,CAACE,GAAG,CAACJ,CAAC,EAAE,CAAC,GAAGC,KAAK,CAAC,GAAG,GAAG,CAAC;AACjD\"}"
+};
+var toGammaSpace = function () {
+  var _e = [new global.Error(), 1, -27];
+  var _f = function _f(x, gamma) {
+    return Math.round(Math.pow(x, 1 / gamma) * 255);
+  };
+  _f._closure = {};
+  _f.__initData = _worklet_3404264460492_init_data;
+  _f.__workletHash = 3404264460492;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_5547345126831_init_data = {
+  code: "function anonymous(value, inputRange, colors, options) {\n  const {\n    toLinearSpace,\n    interpolate,\n    Extrapolate,\n    rgbaColor,\n    toGammaSpace\n  } = this._closure;\n  const {\n    gamma = 2.2\n  } = options;\n  let {\n    r: outputR,\n    g: outputG,\n    b: outputB\n  } = colors;\n  if (gamma !== 1) {\n    outputR = toLinearSpace(outputR, gamma);\n    outputG = toLinearSpace(outputG, gamma);\n    outputB = toLinearSpace(outputB, gamma);\n  }\n  const r = interpolate(value, inputRange, outputR, Extrapolate.CLAMP);\n  const g = interpolate(value, inputRange, outputG, Extrapolate.CLAMP);\n  const b = interpolate(value, inputRange, outputB, Extrapolate.CLAMP);\n  const a = interpolate(value, inputRange, colors.a, Extrapolate.CLAMP);\n  if (gamma === 1) {\n    return rgbaColor(r, g, b, a);\n  }\n  return rgbaColor(toGammaSpace(r, gamma), toGammaSpace(g, gamma), toGammaSpace(b, gamma), a);\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"value\",\"inputRange\",\"colors\",\"options\",\"toLinearSpace\",\"interpolate\",\"Extrapolate\",\"rgbaColor\",\"toGammaSpace\",\"_closure\",\"gamma\",\"r\",\"outputR\",\"g\",\"outputG\",\"b\",\"outputB\",\"CLAMP\",\"a\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AA4D6B,SAACA,SAAOA,CAAAC,KAAA,EAAAC,UAAkB,EAAEC,MAAA,EAAOC,OAAK;EAAA;IAAAC,aAAA;IAAAC,WAAA;IAAAC,WAAA;IAAAC,SAAA;IAAAC;EAAA,SAAAC,QAAA;EAGnE,MAAM;IACJC,KAAK,GAAG;EACV,CAAC,GAAGP,OAAO;EACX,IAAI;IACFQ,CAAC,EAAEC,OAAO;IACVC,CAAC,EAAEC,OAAO;IACVC,CAAC,EAAEC;EACL,CAAC,GAAGd,MAAM;EACV,IAAIQ,KAAK,KAAK,CAAC,EAAE;IACfE,OAAO,GAAGR,aAAa,CAACQ,OAAO,EAAEF,KAAK,CAAC;IACvCI,OAAO,GAAGV,aAAa,CAACU,OAAO,EAAEJ,KAAK,CAAC;IACvCM,OAAO,GAAGZ,aAAa,CAACY,OAAO,EAAEN,KAAK,CAAC;EACzC;EACA,MAAMC,CAAC,GAAGN,WAAW,CAACL,KAAK,EAAEC,UAAU,EAAEW,OAAO,EAAEN,WAAW,CAACW,KAAK,CAAC;EACpE,MAAMJ,CAAC,GAAGR,WAAW,CAACL,KAAK,EAAEC,UAAU,EAAEa,OAAO,EAAER,WAAW,CAACW,KAAK,CAAC;EACpE,MAAMF,CAAC,GAAGV,WAAW,CAACL,KAAK,EAAEC,UAAU,EAAEe,OAAO,EAAEV,WAAW,CAACW,KAAK,CAAC;EACpE,MAAMC,CAAC,GAAGb,WAAW,CAACL,KAAK,EAAEC,UAAU,EAAEC,MAAM,CAACgB,CAAC,EAAEZ,WAAW,CAACW,KAAK,CAAC;EACrE,IAAIP,KAAK,KAAK,CAAC,EAAE;IACf,OAAOH,SAAS,CAACI,CAAC,EAAEE,CAAC,EAAEE,CAAC,EAAEG,CAAC,CAAC;EAC9B;EACA,OAAOX,SAAS,CAACC,YAAY,CAACG,CAAC,EAAED,KAAK,CAAC,EAAEF,YAAY,CAACK,CAAC,EAAEH,KAAK,CAAC,EAAEF,YAAY,CAACO,CAAC,EAAEL,KAAK,CAAC,EAAEQ,CAAC,CAAC;AAC7F\"}"
+};
+var interpolateColorsRGB = function () {
+  var _e = [new global.Error(), -6, -27];
+  var _f = function _f(value, inputRange, colors, options) {
+    var _options$gamma = options.gamma,
+      gamma = _options$gamma === void 0 ? 2.2 : _options$gamma;
+    var outputR = colors.r,
+      outputG = colors.g,
+      outputB = colors.b;
+    if (gamma !== 1) {
+      outputR = toLinearSpace(outputR, gamma);
+      outputG = toLinearSpace(outputG, gamma);
+      outputB = toLinearSpace(outputB, gamma);
+    }
+    var r = (0, _interpolation.interpolate)(value, inputRange, outputR, Extrapolate.CLAMP);
+    var g = (0, _interpolation.interpolate)(value, inputRange, outputG, Extrapolate.CLAMP);
+    var b = (0, _interpolation.interpolate)(value, inputRange, outputB, Extrapolate.CLAMP);
+    var a = (0, _interpolation.interpolate)(value, inputRange, colors.a, Extrapolate.CLAMP);
+    if (gamma === 1) {
+      return (0, _Colors.rgbaColor)(r, g, b, a);
+    }
+    return (0, _Colors.rgbaColor)(toGammaSpace(r, gamma), toGammaSpace(g, gamma), toGammaSpace(b, gamma), a);
+  };
+  _f._closure = {
+    toLinearSpace: toLinearSpace,
+    interpolate: _interpolation.interpolate,
+    Extrapolate: Extrapolate,
+    rgbaColor: _Colors.rgbaColor,
+    toGammaSpace: toGammaSpace
+  };
+  _f.__initData = _worklet_5547345126831_init_data;
+  _f.__workletHash = 5547345126831;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_1256647937052_init_data = {
+  code: "function anonymous(colors) {\n  const {\n    processColor,\n    red,\n    green,\n    blue,\n    opacity\n  } = this._closure;\n  const r = [];\n  const g = [];\n  const b = [];\n  const a = [];\n  for (let i = 0; i < colors.length; ++i) {\n    const color = colors[i];\n    const processedColor = processColor(color);\n    if (processedColor !== null && processedColor !== undefined) {\n      r.push(red(processedColor));\n      g.push(green(processedColor));\n      b.push(blue(processedColor));\n      a.push(opacity(processedColor));\n    }\n  }\n  return {\n    r: r,\n    g: g,\n    b: b,\n    a: a\n  };\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"colors\",\"processColor\",\"red\",\"green\",\"blue\",\"opacity\",\"_closure\",\"r\",\"g\",\"b\",\"a\",\"i\",\"length\",\"color\",\"processedColor\",\"undefined\",\"push\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AAqF0B,SAAAA,SAAMA,CAAIC,MAAA;EAAA;IAAAC,YAAA;IAAAC,GAAA;IAAAC,KAAA;IAAAC,IAAA;IAAAC;EAAA,SAAAC,QAAA;EAGlC,MAAMC,CAAC,GAAG,EAAE;EACZ,MAAMC,CAAC,GAAG,EAAE;EACZ,MAAMC,CAAC,GAAG,EAAE;EACZ,MAAMC,CAAC,GAAG,EAAE;EACZ,KAAK,IAAIC,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGX,MAAM,CAACY,MAAM,EAAE,EAAED,CAAC,EAAE;IACtC,MAAME,KAAK,GAAGb,MAAM,CAACW,CAAC,CAAC;IACvB,MAAMG,cAAc,GAAGb,YAAY,CAACY,KAAK,CAAC;IAE1C,IAAIC,cAAc,KAAK,IAAI,IAAIA,cAAc,KAAKC,SAAS,EAAE;MAC3DR,CAAC,CAACS,IAAI,CAACd,GAAG,CAACY,cAAc,CAAC,CAAC;MAC3BN,CAAC,CAACQ,IAAI,CAACb,KAAK,CAACW,cAAc,CAAC,CAAC;MAC7BL,CAAC,CAACO,IAAI,CAACZ,IAAI,CAACU,cAAc,CAAC,CAAC;MAC5BJ,CAAC,CAACM,IAAI,CAACX,OAAO,CAACS,cAAc,CAAC,CAAC;IACjC;EACF;EACA,OAAO;IACLP,CAAC,EAADA,CAAC;IACDC,CAAC,EAADA,CAAC;IACDC,CAAC,EAADA,CAAC;IACDC,CAAA,EAAAA;EACF,CAAC;AACH\"}"
+};
+var getInterpolateRGB = function () {
+  var _e = [new global.Error(), -6, -27];
+  var _f = function _f(colors) {
+    var r = [];
+    var g = [];
+    var b = [];
+    var a = [];
+    for (var i = 0; i < colors.length; ++i) {
+      var color = colors[i];
+      var processedColor = (0, _Colors.processColor)(color);
+      if (processedColor !== null && processedColor !== undefined) {
+        r.push((0, _Colors.red)(processedColor));
+        g.push((0, _Colors.green)(processedColor));
+        b.push((0, _Colors.blue)(processedColor));
+        a.push((0, _Colors.opacity)(processedColor));
+      }
+    }
+    return {
+      r: r,
+      g: g,
+      b: b,
+      a: a
+    };
+  };
+  _f._closure = {
+    processColor: _Colors.processColor,
+    red: _Colors.red,
+    green: _Colors.green,
+    blue: _Colors.blue,
+    opacity: _Colors.opacity
+  };
+  _f.__initData = _worklet_1256647937052_init_data;
+  _f.__workletHash = 1256647937052;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_4205888180392_init_data = {
+  code: "function anonymous(colors) {\n  const {\n    processColor,\n    RGBtoHSV,\n    red,\n    green,\n    blue,\n    opacity\n  } = this._closure;\n  const h = [];\n  const s = [];\n  const v = [];\n  const a = [];\n  for (let i = 0; i < colors.length; ++i) {\n    const color = colors[i];\n    const processedColor = processColor(color);\n    if (typeof processedColor === 'number') {\n      const processedHSVColor = RGBtoHSV(red(processedColor), green(processedColor), blue(processedColor));\n      h.push(processedHSVColor.h);\n      s.push(processedHSVColor.s);\n      v.push(processedHSVColor.v);\n      a.push(opacity(processedColor));\n    }\n  }\n  return {\n    h: h,\n    s: s,\n    v: v,\n    a: a\n  };\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"colors\",\"processColor\",\"RGBtoHSV\",\"red\",\"green\",\"blue\",\"opacity\",\"_closure\",\"h\",\"s\",\"v\",\"a\",\"i\",\"length\",\"color\",\"processedColor\",\"processedHSVColor\",\"push\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AA8G0B,SAAAA,SAAMA,CAAIC,MAAA;EAAA;IAAAC,YAAA;IAAAC,QAAA;IAAAC,GAAA;IAAAC,KAAA;IAAAC,IAAA;IAAAC;EAAA,SAAAC,QAAA;EAGlC,MAAMC,CAAC,GAAG,EAAE;EACZ,MAAMC,CAAC,GAAG,EAAE;EACZ,MAAMC,CAAC,GAAG,EAAE;EACZ,MAAMC,CAAC,GAAG,EAAE;EACZ,KAAK,IAAIC,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGZ,MAAM,CAACa,MAAM,EAAE,EAAED,CAAC,EAAE;IACtC,MAAME,KAAK,GAAGd,MAAM,CAACY,CAAC,CAAC;IACvB,MAAMG,cAAc,GAAGd,YAAY,CAACa,KAAK,CAAC;IAC1C,IAAI,OAAOC,cAAc,KAAK,QAAQ,EAAE;MACtC,MAAMC,iBAAiB,GAAGd,QAAQ,CAACC,GAAG,CAACY,cAAc,CAAC,EAAEX,KAAK,CAACW,cAAc,CAAC,EAAEV,IAAI,CAACU,cAAc,CAAC,CAAC;MACpGP,CAAC,CAACS,IAAI,CAACD,iBAAiB,CAACR,CAAC,CAAC;MAC3BC,CAAC,CAACQ,IAAI,CAACD,iBAAiB,CAACP,CAAC,CAAC;MAC3BC,CAAC,CAACO,IAAI,CAACD,iBAAiB,CAACN,CAAC,CAAC;MAC3BC,CAAC,CAACM,IAAI,CAACX,OAAO,CAACS,cAAc,CAAC,CAAC;IACjC;EACF;EACA,OAAO;IACLP,CAAC,EAADA,CAAC;IACDC,CAAC,EAADA,CAAC;IACDC,CAAC,EAADA,CAAC;IACDC,CAAA,EAAAA;EACF,CAAC;AACH\"}"
+};
+var getInterpolateHSV = function () {
+  var _e = [new global.Error(), -7, -27];
+  var _f = function _f(colors) {
+    var h = [];
+    var s = [];
+    var v = [];
+    var a = [];
+    for (var i = 0; i < colors.length; ++i) {
+      var color = colors[i];
+      var processedColor = (0, _Colors.processColor)(color);
+      if (typeof processedColor === 'number') {
+        var processedHSVColor = (0, _Colors.RGBtoHSV)((0, _Colors.red)(processedColor), (0, _Colors.green)(processedColor), (0, _Colors.blue)(processedColor));
+        h.push(processedHSVColor.h);
+        s.push(processedHSVColor.s);
+        v.push(processedHSVColor.v);
+        a.push((0, _Colors.opacity)(processedColor));
+      }
+    }
+    return {
+      h: h,
+      s: s,
+      v: v,
+      a: a
+    };
+  };
+  _f._closure = {
+    processColor: _Colors.processColor,
+    RGBtoHSV: _Colors.RGBtoHSV,
+    red: _Colors.red,
+    green: _Colors.green,
+    blue: _Colors.blue,
+    opacity: _Colors.opacity
+  };
+  _f.__initData = _worklet_4205888180392_init_data;
+  _f.__workletHash = 4205888180392;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_11438556143388_init_data = {
+  code: "function anonymous(value, inputRange, outputRange) {\n  const {\n    interpolateColorsHSV,\n    getInterpolateHSV,\n    interpolateColorsRGB,\n    getInterpolateRGB\n  } = this._closure;\n  let colorSpace = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'RGB';\n  let options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};\n  if (colorSpace === 'HSV') {\n    return interpolateColorsHSV(value, inputRange, getInterpolateHSV(outputRange), options);\n  } else if (colorSpace === 'RGB') {\n    return interpolateColorsRGB(value, inputRange, getInterpolateRGB(outputRange), options);\n  }\n  throw new Error(\"Invalid color space provided: \" + colorSpace + \". Supported values are: ['RGB', 'HSV']\");\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"value\",\"inputRange\",\"outputRange\",\"interpolateColorsHSV\",\"getInterpolateHSV\",\"interpolateColorsRGB\",\"getInterpolateRGB\",\"_closure\",\"colorSpace\",\"arguments\",\"length\",\"undefined\",\"options\",\"Error\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AAuIgC,SAAAA,SAAiBA,CAAAC,KAAA,EAAAC,UAAY,EAAAC,WAAa;EAAA;IAAAC,oBAAA;IAAAC,iBAAA;IAAAC,oBAAA;IAAAC;EAAA,SAAAC,QAAA;EAGxE,IAAIC,UAAU,GAAGC,SAAS,CAACC,MAAM,GAAG,CAAC,IAAID,SAAS,CAAC,CAAC,CAAC,KAAKE,SAAS,GAAGF,SAAS,CAAC,CAAC,CAAC,GAAG,KAAK;EAC1F,IAAIG,OAAO,GAAGH,SAAS,CAACC,MAAM,GAAG,CAAC,IAAID,SAAS,CAAC,CAAC,CAAC,KAAKE,SAAS,GAAGF,SAAS,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC;EACpF,IAAID,UAAU,KAAK,KAAK,EAAE;IACxB,OAAOL,oBAAoB,CAACH,KAAK,EAAEC,UAAU,EAAEG,iBAAiB,CAACF,WAAW,CAAC,EAAEU,OAAO,CAAC;EACzF,CAAC,MAAM,IAAIJ,UAAU,KAAK,KAAK,EAAE;IAC/B,OAAOH,oBAAoB,CAACL,KAAK,EAAEC,UAAU,EAAEK,iBAAiB,CAACJ,WAAW,CAAC,EAAEU,OAAO,CAAC;EACzF;EACA,MAAM,IAAIC,KAAK,oCAAkCL,UAAW,2CAAuC,CAAC;AACtG\"}"
+};
+var interpolateColor = function () {
+  var _e = [new global.Error(), -5, -27];
+  var _f = function _f(value, inputRange, outputRange) {
+    var colorSpace = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'RGB';
+    var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+    if (colorSpace === 'HSV') {
+      return interpolateColorsHSV(value, inputRange, getInterpolateHSV(outputRange), options);
+    } else if (colorSpace === 'RGB') {
+      return interpolateColorsRGB(value, inputRange, getInterpolateRGB(outputRange), options);
+    }
+    throw new Error(`Invalid color space provided: ${colorSpace}. Supported values are: ['RGB', 'HSV']`);
+  };
+  _f._closure = {
+    interpolateColorsHSV: interpolateColorsHSV,
+    getInterpolateHSV: getInterpolateHSV,
+    interpolateColorsRGB: interpolateColorsRGB,
+    getInterpolateRGB: getInterpolateRGB
+  };
+  _f.__initData = _worklet_11438556143388_init_data;
+  _f.__workletHash = 11438556143388;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+exports.interpolateColor = interpolateColor;
+var ColorSpace = function (ColorSpace) {
+  ColorSpace[ColorSpace["RGB"] = 0] = "RGB";
+  ColorSpace[ColorSpace["HSV"] = 1] = "HSV";
+  return ColorSpace;
+}({});
+exports.ColorSpace = ColorSpace;
+function useInterpolateConfig(inputRange, outputRange) {
+  var colorSpace = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ColorSpace.RGB;
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  return (0, _useSharedValue.useSharedValue)({
+    inputRange: inputRange,
+    outputRange: outputRange,
+    colorSpace: colorSpace,
+    cache: (0, _core.makeMutable)(null),
+    options: options
+  });
+}
+var _worklet_13643278367522_init_data = {
+  code: "function anonymous(value, interpolateConfig) {\n  const {\n    ColorSpace,\n    getInterpolateRGB,\n    interpolateColorsRGB,\n    getInterpolateHSV,\n    interpolateColorsHSV\n  } = this._closure;\n  let colors = interpolateConfig.value.cache.value;\n  if (interpolateConfig.value.colorSpace === ColorSpace.RGB) {\n    if (!colors) {\n      colors = getInterpolateRGB(interpolateConfig.value.outputRange);\n      interpolateConfig.value.cache.value = colors;\n    }\n    return interpolateColorsRGB(value, interpolateConfig.value.inputRange, colors, interpolateConfig.value.options);\n  } else if (interpolateConfig.value.colorSpace === ColorSpace.HSV) {\n    if (!colors) {\n      colors = getInterpolateHSV(interpolateConfig.value.outputRange);\n      interpolateConfig.value.cache.value = colors;\n    }\n    return interpolateColorsHSV(value, interpolateConfig.value.inputRange, colors, interpolateConfig.value.options);\n  }\n  throw new Error(\"Invalid color space provided: \" + interpolateConfig.value.colorSpace + \". Supported values are: ['RGB', 'HSV']\");\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"value\",\"interpolateConfig\",\"ColorSpace\",\"getInterpolateRGB\",\"interpolateColorsRGB\",\"getInterpolateHSV\",\"interpolateColorsHSV\",\"_closure\",\"colors\",\"cache\",\"colorSpace\",\"RGB\",\"outputRange\",\"inputRange\",\"options\",\"HSV\",\"Error\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/interpolateColor.js\"],\"mappings\":\"AAmKwC,SAACA,SAAOA,CAAAC,KAAA,EAAAC,iBAAsB;EAAA;IAAAC,UAAA;IAAAC,iBAAA;IAAAC,oBAAA;IAAAC,iBAAA;IAAAC;EAAA,SAAAC,QAAA;EAGpE,IAAIC,MAAM,GAAGP,iBAAiB,CAACD,KAAK,CAACS,KAAK,CAACT,KAAK;EAChD,IAAIC,iBAAiB,CAACD,KAAK,CAACU,UAAU,KAAKR,UAAU,CAACS,GAAG,EAAE;IACzD,IAAI,CAACH,MAAM,EAAE;MACXA,MAAM,GAAGL,iBAAiB,CAACF,iBAAiB,CAACD,KAAK,CAACY,WAAW,CAAC;MAC/DX,iBAAiB,CAACD,KAAK,CAACS,KAAK,CAACT,KAAK,GAAGQ,MAAM;IAC9C;IACA,OAAOJ,oBAAoB,CAACJ,KAAK,EAAEC,iBAAiB,CAACD,KAAK,CAACa,UAAU,EAAEL,MAAM,EAAEP,iBAAiB,CAACD,KAAK,CAACc,OAAO,CAAC;EACjH,CAAC,MAAM,IAAIb,iBAAiB,CAACD,KAAK,CAACU,UAAU,KAAKR,UAAU,CAACa,GAAG,EAAE;IAChE,IAAI,CAACP,MAAM,EAAE;MACXA,MAAM,GAAGH,iBAAiB,CAACJ,iBAAiB,CAACD,KAAK,CAACY,WAAW,CAAC;MAC/DX,iBAAiB,CAACD,KAAK,CAACS,KAAK,CAACT,KAAK,GAAGQ,MAAM;IAC9C;IACA,OAAOF,oBAAoB,CAACN,KAAK,EAAEC,iBAAiB,CAACD,KAAK,CAACa,UAAU,EAAEL,MAAM,EAAEP,iBAAiB,CAACD,KAAK,CAACc,OAAO,CAAC;EACjH;EACA,MAAM,IAAIE,KAAK,oCAAkCf,iBAAiB,CAACD,KAAK,CAACU,UAAW,2CAAuC,CAAC;AAC9H\"}"
+};
+var interpolateSharableColor = function () {
+  var _e = [new global.Error(), -6, -27];
+  var _f = function _f(value, interpolateConfig) {
+    var colors = interpolateConfig.value.cache.value;
+    if (interpolateConfig.value.colorSpace === ColorSpace.RGB) {
+      if (!colors) {
+        colors = getInterpolateRGB(interpolateConfig.value.outputRange);
+        interpolateConfig.value.cache.value = colors;
+      }
+      return interpolateColorsRGB(value, interpolateConfig.value.inputRange, colors, interpolateConfig.value.options);
+    } else if (interpolateConfig.value.colorSpace === ColorSpace.HSV) {
+      if (!colors) {
+        colors = getInterpolateHSV(interpolateConfig.value.outputRange);
+        interpolateConfig.value.cache.value = colors;
+      }
+      return interpolateColorsHSV(value, interpolateConfig.value.inputRange, colors, interpolateConfig.value.options);
+    }
+    throw new Error(`Invalid color space provided: ${interpolateConfig.value.colorSpace}. Supported values are: ['RGB', 'HSV']`);
+  };
+  _f._closure = {
+    ColorSpace: ColorSpace,
+    getInterpolateRGB: getInterpolateRGB,
+    interpolateColorsRGB: interpolateColorsRGB,
+    getInterpolateHSV: getInterpolateHSV,
+    interpolateColorsHSV: interpolateColorsHSV
+  };
+  _f.__initData = _worklet_13643278367522_init_data;
+  _f.__workletHash = 13643278367522;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+exports.interpolateSharableColor = interpolateSharableColor;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfQ29sb3JzIiwicmVxdWlyZSIsIl9jb3JlIiwiX2ludGVycG9sYXRpb24iLCJfdXNlU2hhcmVkVmFsdWUiLCJFeHRyYXBvbGF0ZSIsIkVYVEVORCIsIkNMQU1QIiwiSURFTlRJVFkiLCJleHBvcnRzIiwiX3dvcmtsZXRfNjkwNjc5ODk5NDkyOF9pbml0X2RhdGEiLCJjb2RlIiwibG9jYXRpb24iLCJzb3VyY2VNYXAiLCJpbnRlcnBvbGF0ZUNvbG9yc0hTViIsIl9lIiwiZ2xvYmFsIiwiRXJyb3IiLCJfZiIsInZhbHVlIiwiaW5wdXRSYW5nZSIsImNvbG9ycyIsIm9wdGlvbnMiLCJoIiwiX29wdGlvbnMkdXNlQ29ycmVjdGVkIiwidXNlQ29ycmVjdGVkSFNWSW50ZXJwb2xhdGlvbiIsImNvcnJlY3RlZElucHV0UmFuZ2UiLCJvcmlnaW5hbEgiLCJjb3JyZWN0ZWRIIiwiaSIsImxlbmd0aCIsImQiLCJwdXNoIiwiaW50ZXJwb2xhdGUiLCJzIiwidiIsImEiLCJoc3ZUb0NvbG9yIiwiX2Nsb3N1cmUiLCJfX2luaXREYXRhIiwiX193b3JrbGV0SGFzaCIsIl9fc3RhY2tEZXRhaWxzIiwiX192ZXJzaW9uIiwiX3dvcmtsZXRfMTEyNzE2MDY3NDU5OTdfaW5pdF9kYXRhIiwidG9MaW5lYXJTcGFjZSIsIngiLCJnYW1tYSIsIm1hcCIsIk1hdGgiLCJwb3ciLCJfd29ya2xldF8zNDA0MjY0NDYwNDkyX2luaXRfZGF0YSIsInRvR2FtbWFTcGFjZSIsInJvdW5kIiwiX3dvcmtsZXRfNTU0NzM0NTEyNjgzMV9pbml0X2RhdGEiLCJpbnRlcnBvbGF0ZUNvbG9yc1JHQiIsIl9vcHRpb25zJGdhbW1hIiwib3V0cHV0UiIsInIiLCJvdXRwdXRHIiwiZyIsIm91dHB1dEIiLCJiIiwicmdiYUNvbG9yIiwiX3dvcmtsZXRfMTI1NjY0NzkzNzA1Ml9pbml0X2RhdGEiLCJnZXRJbnRlcnBvbGF0ZVJHQiIsImNvbG9yIiwicHJvY2Vzc2VkQ29sb3IiLCJwcm9jZXNzQ29sb3IiLCJ1bmRlZmluZWQiLCJyZWQiLCJncmVlbiIsImJsdWUiLCJvcGFjaXR5IiwiX3dvcmtsZXRfNDIwNTg4ODE4MDM5Ml9pbml0X2RhdGEiLCJnZXRJbnRlcnBvbGF0ZUhTViIsInByb2Nlc3NlZEhTVkNvbG9yIiwiUkdCdG9IU1YiLCJfd29ya2xldF8xMTQzODU1NjE0MzM4OF9pbml0X2RhdGEiLCJpbnRlcnBvbGF0ZUNvbG9yIiwib3V0cHV0UmFuZ2UiLCJjb2xvclNwYWNlIiwiYXJndW1lbnRzIiwiQ29sb3JTcGFjZSIsInVzZUludGVycG9sYXRlQ29uZmlnIiwiUkdCIiwidXNlU2hhcmVkVmFsdWUiLCJjYWNoZSIsIm1ha2VNdXRhYmxlIiwiX3dvcmtsZXRfMTM2NDMyNzgzNjc1MjJfaW5pdF9kYXRhIiwiaW50ZXJwb2xhdGVTaGFyYWJsZUNvbG9yIiwiaW50ZXJwb2xhdGVDb25maWciLCJIU1YiXSwic291cmNlcyI6WyJpbnRlcnBvbGF0ZUNvbG9yLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7XG4gIGhzdlRvQ29sb3IsXG4gIFJHQnRvSFNWLFxuICByZ2JhQ29sb3IsXG4gIHByb2Nlc3NDb2xvcixcbiAgcmVkLFxuICBncmVlbixcbiAgYmx1ZSxcbiAgb3BhY2l0eSxcbn0gZnJvbSAnLi9Db2xvcnMnO1xuaW1wb3J0IHsgbWFrZU11dGFibGUgfSBmcm9tICcuL2NvcmUnO1xuaW1wb3J0IHsgaW50ZXJwb2xhdGUgfSBmcm9tICcuL2ludGVycG9sYXRpb24nO1xuaW1wb3J0IHsgU2hhcmVkVmFsdWUgfSBmcm9tICcuL2NvbW1vblR5cGVzJztcbmltcG9ydCB7IHVzZVNoYXJlZFZhbHVlIH0gZnJvbSAnLi9ob29rL3VzZVNoYXJlZFZhbHVlJztcblxuZXhwb3J0IGNvbnN0IEV4dHJhcG9sYXRlID0ge1xuICBFWFRFTkQ6ICdleHRlbmQnLFxuICBDTEFNUDogJ2NsYW1wJyxcbiAgSURFTlRJVFk6ICdpZGVudGl0eScsXG59O1xuXG5leHBvcnQgdHlwZSBJbnRlcnBvbGF0aW9uT3B0aW9ucyA9IHtcbiAgZ2FtbWE/OiBudW1iZXI7XG4gIHVzZUNvcnJlY3RlZEhTVkludGVycG9sYXRpb24/OiBib29sZWFuO1xufTtcblxuY29uc3QgaW50ZXJwb2xhdGVDb2xvcnNIU1YgPSAoXG4gIHZhbHVlOiBudW1iZXIsXG4gIGlucHV0UmFuZ2U6IHJlYWRvbmx5IG51bWJlcltdLFxuICBjb2xvcnM6IEludGVycG9sYXRlSFNWLFxuICBvcHRpb25zOiBJbnRlcnBvbGF0aW9uT3B0aW9uc1xuKSA9PiB7XG4gICd3b3JrbGV0JztcbiAgbGV0IGggPSAwO1xuICBjb25zdCB7IHVzZUNvcnJlY3RlZEhTVkludGVycG9sYXRpb24gPSB0cnVlIH0gPSBvcHRpb25zO1xuICBpZiAodXNlQ29ycmVjdGVkSFNWSW50ZXJwb2xhdGlvbikge1xuICAgIC8vIGlmIHRoZSBkaWZmZXJlbmNlIGJldHdlZW4gaHVlcyBpbiBhIHJhbmdlIGlzID4gMTgwIGRlZ1xuICAgIC8vIHRoZW4gbW92ZSB0aGUgaHVlIGF0IHRoZSByaWdodCBlbmQgb2YgdGhlIHJhbmdlICsvLSAzNjAgZGVnXG4gICAgLy8gYW5kIGFkZCB0aGUgbmV4dCBwb2ludCBpbiB0aGUgb3JpZ2luYWwgcGxhY2UgKyAwLjAwMDAxIHdpdGggb3JpZ2luYWwgaHVlXG4gICAgLy8gdG8gbm90IGJyZWFrIHRoZSBuZXh0IHJhbmdlXG4gICAgY29uc3QgY29ycmVjdGVkSW5wdXRSYW5nZSA9IFtpbnB1dFJhbmdlWzBdXTtcbiAgICBjb25zdCBvcmlnaW5hbEggPSBjb2xvcnMuaDtcbiAgICBjb25zdCBjb3JyZWN0ZWRIID0gW29yaWdpbmFsSFswXV07XG5cbiAgICBmb3IgKGxldCBpID0gMTsgaSA8IG9yaWdpbmFsSC5sZW5ndGg7ICsraSkge1xuICAgICAgY29uc3QgZCA9IG9yaWdpbmFsSFtpXSAtIG9yaWdpbmFsSFtpIC0gMV07XG4gICAgICBpZiAob3JpZ2luYWxIW2ldID4gb3JpZ2luYWxIW2kgLSAxXSAmJiBkID4gMC41KSB7XG4gICAgICAgIGNvcnJlY3RlZElucHV0UmFuZ2UucHVzaChpbnB1dFJhbmdlW2ldKTtcbiAgICAgICAgY29ycmVjdGVkSW5wdXRSYW5nZS5wdXNoKGlucHV0UmFuZ2VbaV0gKyAwLjAwMDAxKTtcbiAgICAgICAgY29ycmVjdGVkSC5wdXNoKG9yaWdpbmFsSFtpXSAtIDEpO1xuICAgICAgICBjb3JyZWN0ZWRILnB1c2gob3JpZ2luYWxIW2ldKTtcbiAgICAgIH0gZWxzZSBpZiAob3JpZ2luYWxIW2ldIDwgb3JpZ2luYWxIW2kgLSAxXSAmJiBkIDwgLTAuNSkge1xuICAgICAgICBjb3JyZWN0ZWRJbnB1dFJhbmdlLnB1c2goaW5wdXRSYW5nZVtpXSk7XG4gICAgICAgIGNvcnJlY3RlZElucHV0UmFuZ2UucHVzaChpbnB1dFJhbmdlW2ldICsgMC4wMDAwMSk7XG4gICAgICAgIGNvcnJlY3RlZEgucHVzaChvcmlnaW5hbEhbaV0gKyAxKTtcbiAgICAgICAgY29ycmVjdGVkSC5wdXNoKG9yaWdpbmFsSFtpXSk7XG4gICAgICB9IGVsc2Uge1xuICAgICAgICBjb3JyZWN0ZWRJbnB1dFJhbmdlLnB1c2goaW5wdXRSYW5nZVtpXSk7XG4gICAgICAgIGNvcnJlY3RlZEgucHVzaChvcmlnaW5hbEhbaV0pO1xuICAgICAgfVxuICAgIH1cbiAgICBoID1cbiAgICAgIChpbnRlcnBvbGF0ZSh2YWx1ZSwgY29ycmVjdGVkSW5wdXRSYW5nZSwgY29ycmVjdGVkSCwgRXh0cmFwb2xhdGUuQ0xBTVApICtcbiAgICAgICAgMSkgJVxuICAgICAgMTtcbiAgfSBlbHNlIHtcbiAgICBoID0gaW50ZXJwb2xhdGUodmFsdWUsIGlucHV0UmFuZ2UsIGNvbG9ycy5oLCBFeHRyYXBvbGF0ZS5DTEFNUCk7XG4gIH1cbiAgY29uc3QgcyA9IGludGVycG9sYXRlKHZhbHVlLCBpbnB1dFJhbmdlLCBjb2xvcnMucywgRXh0cmFwb2xhdGUuQ0xBTVApO1xuICBjb25zdCB2ID0gaW50ZXJwb2xhdGUodmFsdWUsIGlucHV0UmFuZ2UsIGNvbG9ycy52LCBFeHRyYXBvbGF0ZS5DTEFNUCk7XG4gIGNvbnN0IGEgPSBpbnRlcnBvbGF0ZSh2YWx1ZSwgaW5wdXRSYW5nZSwgY29sb3JzLmEsIEV4dHJhcG9sYXRlLkNMQU1QKTtcbiAgcmV0dXJuIGhzdlRvQ29sb3IoaCwgcywgdiwgYSk7XG59O1xuXG5jb25zdCB0b0xpbmVhclNwYWNlID0gKHg6IG51bWJlcltdLCBnYW1tYTogbnVtYmVyKTogbnVtYmVyW10gPT4ge1xuICAnd29ya2xldCc7XG4gIHJldHVybiB4Lm1hcCgodikgPT4gTWF0aC5wb3codiAvIDI1NSwgZ2FtbWEpKTtcbn07XG5cbmNvbnN0IHRvR2FtbWFTcGFjZSA9ICh4OiBudW1iZXIsIGdhbW1hOiBudW1iZXIpOiBudW1iZXIgPT4ge1xuICAnd29ya2xldCc7XG4gIHJldHVybiBNYXRoLnJvdW5kKE1hdGgucG93KHgsIDEgLyBnYW1tYSkgKiAyNTUpO1xufTtcblxuY29uc3QgaW50ZXJwb2xhdGVDb2xvcnNSR0IgPSAoXG4gIHZhbHVlOiBudW1iZXIsXG4gIGlucHV0UmFuZ2U6IHJlYWRvbmx5IG51bWJlcltdLFxuICBjb2xvcnM6IEludGVycG9sYXRlUkdCLFxuICBvcHRpb25zOiBJbnRlcnBvbGF0aW9uT3B0aW9uc1xuKSA9PiB7XG4gICd3b3JrbGV0JztcbiAgY29uc3QgeyBnYW1tYSA9IDIuMiB9ID0gb3B0aW9ucztcbiAgbGV0IHsgcjogb3V0cHV0UiwgZzogb3V0cHV0RywgYjogb3V0cHV0QiB9ID0gY29sb3JzO1xuICBpZiAoZ2FtbWEgIT09IDEpIHtcbiAgICBvdXRwdXRSID0gdG9MaW5lYXJTcGFjZShvdXRwdXRSLCBnYW1tYSk7XG4gICAgb3V0cHV0RyA9IHRvTGluZWFyU3BhY2Uob3V0cHV0RywgZ2FtbWEpO1xuICAgIG91dHB1dEIgPSB0b0xpbmVhclNwYWNlKG91dHB1dEIsIGdhbW1hKTtcbiAgfVxuICBjb25zdCByID0gaW50ZXJwb2xhdGUodmFsdWUsIGlucHV0UmFuZ2UsIG91dHB1dFIsIEV4dHJhcG9sYXRlLkNMQU1QKTtcbiAgY29uc3QgZyA9IGludGVycG9sYXRlKHZhbHVlLCBpbnB1dFJhbmdlLCBvdXRwdXRHLCBFeHRyYXBvbGF0ZS5DTEFNUCk7XG4gIGNvbnN0IGIgPSBpbnRlcnBvbGF0ZSh2YWx1ZSwgaW5wdXRSYW5nZSwgb3V0cHV0QiwgRXh0cmFwb2xhdGUuQ0xBTVApO1xuICBjb25zdCBhID0gaW50ZXJwb2xhdGUodmFsdWUsIGlucHV0UmFuZ2UsIGNvbG9ycy5hLCBFeHRyYXBvbGF0ZS5DTEFNUCk7XG4gIGlmIChnYW1tYSA9PT0gMSkge1xuICAgIHJldHVybiByZ2JhQ29sb3IociwgZywgYiwgYSk7XG4gIH1cbiAgcmV0dXJuIHJnYmFDb2xvcihcbiAgICB0b0dhbW1hU3BhY2UociwgZ2FtbWEpLFxuICAgIHRvR2FtbWFTcGFjZShnLCBnYW1tYSksXG4gICAgdG9HYW1tYVNwYWNlKGIsIGdhbW1hKSxcbiAgICBhXG4gICk7XG59O1xuXG5pbnRlcmZhY2UgSW50ZXJwb2xhdGVSR0Ige1xuICByOiBudW1iZXJbXTtcbiAgZzogbnVtYmVyW107XG4gIGI6IG51bWJlcltdO1xuICBhOiBudW1iZXJbXTtcbn1cblxuY29uc3QgZ2V0SW50ZXJwb2xhdGVSR0IgPSAoXG4gIGNvbG9yczogcmVhZG9ubHkgKHN0cmluZyB8IG51bWJlcilbXVxuKTogSW50ZXJwb2xhdGVSR0IgPT4ge1xuICAnd29ya2xldCc7XG5cbiAgY29uc3QgciA9IFtdO1xuICBjb25zdCBnID0gW107XG4gIGNvbnN0IGIgPSBbXTtcbiAgY29uc3QgYSA9IFtdO1xuICBmb3IgKGxldCBpID0gMDsgaSA8IGNvbG9ycy5sZW5ndGg7ICsraSkge1xuICAgIGNvbnN0IGNvbG9yID0gY29sb3JzW2ldO1xuICAgIGNvbnN0IHByb2Nlc3NlZENvbG9yID0gcHJvY2Vzc0NvbG9yKGNvbG9yKTtcbiAgICAvLyBleHBsaWNpdCBjaGVjayBpbiBjYXNlIGlmIHByb2Nlc3NlZENvbG9yIGlzIDBcbiAgICBpZiAocHJvY2Vzc2VkQ29sb3IgIT09IG51bGwgJiYgcHJvY2Vzc2VkQ29sb3IgIT09IHVuZGVmaW5lZCkge1xuICAgICAgci5wdXNoKHJlZChwcm9jZXNzZWRDb2xvcikpO1xuICAgICAgZy5wdXNoKGdyZWVuKHByb2Nlc3NlZENvbG9yKSk7XG4gICAgICBiLnB1c2goYmx1ZShwcm9jZXNzZWRDb2xvcikpO1xuICAgICAgYS5wdXNoKG9wYWNpdHkocHJvY2Vzc2VkQ29sb3IpKTtcbiAgICB9XG4gIH1cbiAgcmV0dXJuIHsgciwgZywgYiwgYSB9O1xufTtcblxuaW50ZXJmYWNlIEludGVycG9sYXRlSFNWIHtcbiAgaDogbnVtYmVyW107XG4gIHM6IG51bWJlcltdO1xuICB2OiBudW1iZXJbXTtcbiAgYTogbnVtYmVyW107XG59XG5cbmNvbnN0IGdldEludGVycG9sYXRlSFNWID0gKFxuICBjb2xvcnM6IHJlYWRvbmx5IChzdHJpbmcgfCBudW1iZXIpW11cbik6IEludGVycG9sYXRlSFNWID0+IHtcbiAgJ3dvcmtsZXQnO1xuICBjb25zdCBoID0gW107XG4gIGNvbnN0IHMgPSBbXTtcbiAgY29uc3QgdiA9IFtdO1xuICBjb25zdCBhID0gW107XG4gIGZvciAobGV0IGkgPSAwOyBpIDwgY29sb3JzLmxlbmd0aDsgKytpKSB7XG4gICAgY29uc3QgY29sb3IgPSBjb2xvcnNbaV07XG4gICAgY29uc3QgcHJvY2Vzc2VkQ29sb3IgPSBwcm9jZXNzQ29sb3IoY29sb3IpIGFzIGFueTtcbiAgICBpZiAodHlwZW9mIHByb2Nlc3NlZENvbG9yID09PSAnbnVtYmVyJykge1xuICAgICAgY29uc3QgcHJvY2Vzc2VkSFNWQ29sb3IgPSBSR0J0b0hTVihcbiAgICAgICAgcmVkKHByb2Nlc3NlZENvbG9yKSxcbiAgICAgICAgZ3JlZW4ocHJvY2Vzc2VkQ29sb3IpLFxuICAgICAgICBibHVlKHByb2Nlc3NlZENvbG9yKVxuICAgICAgKTtcblxuICAgICAgaC5wdXNoKHByb2Nlc3NlZEhTVkNvbG9yLmgpO1xuICAgICAgcy5wdXNoKHByb2Nlc3NlZEhTVkNvbG9yLnMpO1xuICAgICAgdi5wdXNoKHByb2Nlc3NlZEhTVkNvbG9yLnYpO1xuICAgICAgYS5wdXNoKG9wYWNpdHkocHJvY2Vzc2VkQ29sb3IpKTtcbiAgICB9XG4gIH1cbiAgcmV0dXJuIHsgaCwgcywgdiwgYSB9O1xufTtcblxuZXhwb3J0IGNvbnN0IGludGVycG9sYXRlQ29sb3IgPSAoXG4gIHZhbHVlOiBudW1iZXIsXG4gIGlucHV0UmFuZ2U6IHJlYWRvbmx5IG51bWJlcltdLFxuICBvdXRwdXRSYW5nZTogcmVhZG9ubHkgKHN0cmluZyB8IG51bWJlcilbXSxcbiAgY29sb3JTcGFjZTogJ1JHQicgfCAnSFNWJyA9ICdSR0InLFxuICBvcHRpb25zOiBJbnRlcnBvbGF0aW9uT3B0aW9ucyA9IHt9XG4pOiBzdHJpbmcgfCBudW1iZXIgPT4ge1xuICAnd29ya2xldCc7XG4gIGlmIChjb2xvclNwYWNlID09PSAnSFNWJykge1xuICAgIHJldHVybiBpbnRlcnBvbGF0ZUNvbG9yc0hTVihcbiAgICAgIHZhbHVlLFxuICAgICAgaW5wdXRSYW5nZSxcbiAgICAgIGdldEludGVycG9sYXRlSFNWKG91dHB1dFJhbmdlKSxcbiAgICAgIG9wdGlvbnNcbiAgICApO1xuICB9IGVsc2UgaWYgKGNvbG9yU3BhY2UgPT09ICdSR0InKSB7XG4gICAgcmV0dXJuIGludGVycG9sYXRlQ29sb3JzUkdCKFxuICAgICAgdmFsdWUsXG4gICAgICBpbnB1dFJhbmdlLFxuICAgICAgZ2V0SW50ZXJwb2xhdGVSR0Iob3V0cHV0UmFuZ2UpLFxuICAgICAgb3B0aW9uc1xuICAgICk7XG4gIH1cbiAgdGhyb3cgbmV3IEVycm9yKFxuICAgIGBJbnZhbGlkIGNvbG9yIHNwYWNlIHByb3ZpZGVkOiAke2NvbG9yU3BhY2V9LiBTdXBwb3J0ZWQgdmFsdWVzIGFyZTogWydSR0InLCAnSFNWJ11gXG4gICk7XG59O1xuXG5leHBvcnQgZW51bSBDb2xvclNwYWNlIHtcbiAgUkdCID0gMCxcbiAgSFNWID0gMSxcbn1cblxuZXhwb3J0IGludGVyZmFjZSBJbnRlcnBvbGF0ZUNvbmZpZyB7XG4gIGlucHV0UmFuZ2U6IHJlYWRvbmx5IG51bWJlcltdO1xuICBvdXRwdXRSYW5nZTogcmVhZG9ubHkgKHN0cmluZyB8IG51bWJlcilbXTtcbiAgY29sb3JTcGFjZTogQ29sb3JTcGFjZTtcbiAgY2FjaGU6IFNoYXJlZFZhbHVlPEludGVycG9sYXRlUkdCIHwgSW50ZXJwb2xhdGVIU1YgfCBudWxsPjtcbiAgb3B0aW9uczogSW50ZXJwb2xhdGlvbk9wdGlvbnM7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiB1c2VJbnRlcnBvbGF0ZUNvbmZpZyhcbiAgaW5wdXRSYW5nZTogcmVhZG9ubHkgbnVtYmVyW10sXG4gIG91dHB1dFJhbmdlOiByZWFkb25seSAoc3RyaW5nIHwgbnVtYmVyKVtdLFxuICBjb2xvclNwYWNlID0gQ29sb3JTcGFjZS5SR0IsXG4gIG9wdGlvbnM6IEludGVycG9sYXRpb25PcHRpb25zID0ge31cbik6IFNoYXJlZFZhbHVlPEludGVycG9sYXRlQ29uZmlnPiB7XG4gIHJldHVybiB1c2VTaGFyZWRWYWx1ZTxJbnRlcnBvbGF0ZUNvbmZpZz4oe1xuICAgIGlucHV0UmFuZ2UsXG4gICAgb3V0cHV0UmFuZ2UsXG4gICAgY29sb3JTcGFjZSxcbiAgICBjYWNoZTogbWFrZU11dGFibGU8SW50ZXJwb2xhdGVSR0IgfCBJbnRlcnBvbGF0ZUhTViB8IG51bGw+KG51bGwpLFxuICAgIG9wdGlvbnMsXG4gIH0pO1xufVxuXG5leHBvcnQgY29uc3QgaW50ZXJwb2xhdGVTaGFyYWJsZUNvbG9yID0gKFxuICB2YWx1ZTogbnVtYmVyLFxuICBpbnRlcnBvbGF0ZUNvbmZpZzogU2hhcmVkVmFsdWU8SW50ZXJwb2xhdGVDb25maWc+XG4pOiBzdHJpbmcgfCBudW1iZXIgPT4ge1xuICAnd29ya2xldCc7XG4gIGxldCBjb2xvcnMgPSBpbnRlcnBvbGF0ZUNvbmZpZy52YWx1ZS5jYWNoZS52YWx1ZTtcbiAgaWYgKGludGVycG9sYXRlQ29uZmlnLnZhbHVlLmNvbG9yU3BhY2UgPT09IENvbG9yU3BhY2UuUkdCKSB7XG4gICAgaWYgKCFjb2xvcnMpIHtcbiAgICAgIGNvbG9ycyA9IGdldEludGVycG9sYXRlUkdCKGludGVycG9sYXRlQ29uZmlnLnZhbHVlLm91dHB1dFJhbmdlKTtcbiAgICAgIGludGVycG9sYXRlQ29uZmlnLnZhbHVlLmNhY2hlLnZhbHVlID0gY29sb3JzO1xuICAgIH1cbiAgICByZXR1cm4gaW50ZXJwb2xhdGVDb2xvcnNSR0IoXG4gICAgICB2YWx1ZSxcbiAgICAgIGludGVycG9sYXRlQ29uZmlnLnZhbHVlLmlucHV0UmFuZ2UsXG4gICAgICBjb2xvcnMgYXMgSW50ZXJwb2xhdGVSR0IsXG4gICAgICBpbnRlcnBvbGF0ZUNvbmZpZy52YWx1ZS5vcHRpb25zXG4gICAgKTtcbiAgfSBlbHNlIGlmIChpbnRlcnBvbGF0ZUNvbmZpZy52YWx1ZS5jb2xvclNwYWNlID09PSBDb2xvclNwYWNlLkhTVikge1xuICAgIGlmICghY29sb3JzKSB7XG4gICAgICBjb2xvcnMgPSBnZXRJbnRlcnBvbGF0ZUhTVihpbnRlcnBvbGF0ZUNvbmZpZy52YWx1ZS5vdXRwdXRSYW5nZSk7XG4gICAgICBpbnRlcnBvbGF0ZUNvbmZpZy52YWx1ZS5jYWNoZS52YWx1ZSA9IGNvbG9ycztcbiAgICB9XG4gICAgcmV0dXJuIGludGVycG9sYXRlQ29sb3JzSFNWKFxuICAgICAgdmFsdWUsXG4gICAgICBpbnRlcnBvbGF0ZUNvbmZpZy52YWx1ZS5pbnB1dFJhbmdlLFxuICAgICAgY29sb3JzIGFzIEludGVycG9sYXRlSFNWLFxuICAgICAgaW50ZXJwb2xhdGVDb25maWcudmFsdWUub3B0aW9uc1xuICAgICk7XG4gIH1cbiAgdGhyb3cgbmV3IEVycm9yKFxuICAgIGBJbnZhbGlkIGNvbG9yIHNwYWNlIHByb3ZpZGVkOiAke2ludGVycG9sYXRlQ29uZmlnLnZhbHVlLmNvbG9yU3BhY2V9LiBTdXBwb3J0ZWQgdmFsdWVzIGFyZTogWydSR0InLCAnSFNWJ11gXG4gICk7XG59O1xuIl0sIm1hcHBpbmdzIjoiOzs7OztBQUFBLElBQUFBLE9BQUEsR0FBQUMsT0FB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

@@ -1,0 +1,12 @@
+03456feab2147926b0915eef45e752d2
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getFirestore = exports.getDoc = exports.doc = void 0;
+var getFirestore = jest.fn();
+exports.getFirestore = getFirestore;
+var doc = jest.fn();
+exports.doc = doc;
+var getDoc = jest.fn();
+exports.getDoc = getDoc;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJnZXRGaXJlc3RvcmUiLCJqZXN0IiwiZm4iLCJleHBvcnRzIiwiZG9jIiwiZ2V0RG9jIl0sInNvdXJjZXMiOlsiZmlyZWJhc2VGaXJlc3RvcmUuanMiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNvbnN0IGdldEZpcmVzdG9yZSA9IGplc3QuZm4oKTtcbi8vIGZpcmVzdG9yZS5qcyBtb2NrXG5leHBvcnQgY29uc3QgZG9jID0gamVzdC5mbigpO1xuZXhwb3J0IGNvbnN0IGdldERvYyA9IGplc3QuZm4oKTsiXSwibWFwcGluZ3MiOiI7Ozs7QUFBTyxJQUFNQSxZQUFZLEdBQUdDLElBQUksQ0FBQ0MsRUFBRSxDQUFDLENBQUM7QUFBQ0MsT0FBQSxDQUFBSCxZQUFBLEdBQUFBLFlBQUE7QUFFL0IsSUFBTUksR0FBRyxHQUFHSCxJQUFJLENBQUNDLEVBQUUsQ0FBQyxDQUFDO0FBQUNDLE9BQUEsQ0FBQUMsR0FBQSxHQUFBQSxHQUFBO0FBQ3RCLElBQU1DLE1BQU0sR0FBR0osSUFBSSxDQUFDQyxFQUFFLENBQUMsQ0FBQztBQUFDQyxPQUFBLENBQUFFLE1BQUEsR0FBQUEsTUFBQSJ9

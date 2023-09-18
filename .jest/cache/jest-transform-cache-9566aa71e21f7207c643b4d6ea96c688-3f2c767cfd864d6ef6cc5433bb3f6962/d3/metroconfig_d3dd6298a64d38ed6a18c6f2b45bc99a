@@ -1,0 +1,84 @@
+163c5698cddaceeef2d8a57395ae7882
+function cov_kqxn53g0a() {
+  var path = "/Users/bjaztin/Desktop/taskManagerApp/metro.config.js";
+  var hash = "6e3e82691dc8c9aca3e573c3d5525df1a81c2854";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/bjaztin/Desktop/taskManagerApp/metro.config.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 1,
+          column: 29
+        },
+        end: {
+          line: 1,
+          column: 58
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 22
+        },
+        end: {
+          line: 3,
+          column: 49
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 45
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 31
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    f: {},
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "6e3e82691dc8c9aca3e573c3d5525df1a81c2854"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_kqxn53g0a = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_kqxn53g0a();
+var _ref = (cov_kqxn53g0a().s[0]++, require('@expo/metro-config')),
+  getDefaultConfig = _ref.getDefaultConfig;
+var defaultConfig = (cov_kqxn53g0a().s[1]++, getDefaultConfig(__dirname));
+cov_kqxn53g0a().s[2]++;
+defaultConfig.resolver.assetExts.push('cjs');
+cov_kqxn53g0a().s[3]++;
+module.exports = defaultConfig;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfcmVmIiwiY292X2txeG41M2cwYSIsInMiLCJyZXF1aXJlIiwiZ2V0RGVmYXVsdENvbmZpZyIsImRlZmF1bHRDb25maWciLCJfX2Rpcm5hbWUiLCJyZXNvbHZlciIsImFzc2V0RXh0cyIsInB1c2giLCJtb2R1bGUiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsibWV0cm8uY29uZmlnLmpzIl0sInNvdXJjZXNDb250ZW50IjpbImNvbnN0IHsgZ2V0RGVmYXVsdENvbmZpZyB9ID0gcmVxdWlyZSgnQGV4cG8vbWV0cm8tY29uZmlnJyk7XG5cbmNvbnN0IGRlZmF1bHRDb25maWcgPSBnZXREZWZhdWx0Q29uZmlnKF9fZGlybmFtZSk7XG5kZWZhdWx0Q29uZmlnLnJlc29sdmVyLmFzc2V0RXh0cy5wdXNoKCdjanMnKTtcblxubW9kdWxlLmV4cG9ydHMgPSBkZWZhdWx0Q29uZmlnOyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsSUFBQUEsSUFBQSxJQUFBQyxhQUFBLEdBQUFDLENBQUEsT0FBNkJDLE9BQU8sQ0FBQyxvQkFBb0IsQ0FBQztFQUFsREMsZ0JBQWdCLEdBQUFKLElBQUEsQ0FBaEJJLGdCQUFnQjtBQUV4QixJQUFNQyxhQUFhLElBQUFKLGFBQUEsR0FBQUMsQ0FBQSxPQUFHRSxnQkFBZ0IsQ0FBQ0UsU0FBUyxDQUFDO0FBQUNMLGFBQUEsR0FBQUMsQ0FBQTtBQUNsREcsYUFBYSxDQUFDRSxRQUFRLENBQUNDLFNBQVMsQ0FBQ0MsSUFBSSxDQUFDLEtBQUssQ0FBQztBQUFDUixhQUFBLEdBQUFDLENBQUE7QUFFN0NRLE1BQU0sQ0FBQ0MsT0FBTyxHQUFHTixhQUFhIn0=

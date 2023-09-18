@@ -1,0 +1,5 @@
+bf3986d36e76bc7e3c7f80372771dcce
+module.exports = {
+      testUri:
+        "../../../assets/icon.png"
+    };

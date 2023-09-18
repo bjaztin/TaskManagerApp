@@ -1,0 +1,1 @@
+{"version":3,"names":[],"sources":["audioMock.js"],"sourcesContent":["// audioMock.js;\n// // __mocks__/openingSound.mp3\n// export default 'openingSound.mp3';\n"],"mappings":""}

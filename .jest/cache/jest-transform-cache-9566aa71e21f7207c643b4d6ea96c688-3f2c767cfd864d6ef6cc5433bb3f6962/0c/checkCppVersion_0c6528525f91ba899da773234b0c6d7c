@@ -1,0 +1,35 @@
+d62766b5b6f46c115a4bda975cb56974
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkCppVersion = checkCppVersion;
+exports.matchVersion = matchVersion;
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _jsVersion = require("./jsVersion");
+function checkCppVersion() {
+  var cppVersion = global._REANIMATED_VERSION_CPP;
+  if (cppVersion === undefined) {
+    throw new Error(`[Reanimated] Couldn't determine the version of the native part of Reanimated. Did you forget to re-build the app after upgrading react-native-reanimated? If you use Expo Go, you must use the exact version which is bundled into Expo SDK.`);
+  }
+  var ok = matchVersion(_jsVersion.jsVersion, cppVersion);
+  if (!ok) {
+    throw new Error(`[Reanimated] Mismatch between JavaScript part and native part of Reanimated (${_jsVersion.jsVersion} vs. ${cppVersion}). Did you forget to re-build the app after upgrading react-native-reanimated? If you use Expo Go, you must downgrade to ${cppVersion} which is bundled into Expo SDK.`);
+  }
+}
+function matchVersion(version1, version2) {
+  if (version1.match(/^\d+\.\d+\.\d+$/) && version2.match(/^\d+\.\d+\.\d+$/)) {
+    var _version1$split = version1.split('.'),
+      _version1$split2 = (0, _slicedToArray2.default)(_version1$split, 2),
+      major1 = _version1$split2[0],
+      minor1 = _version1$split2[1];
+    var _version2$split = version2.split('.'),
+      _version2$split2 = (0, _slicedToArray2.default)(_version2$split, 2),
+      major2 = _version2$split2[0],
+      minor2 = _version2$split2[1];
+    return major1 === major2 && minor1 === minor2;
+  } else {
+    return version1 === version2;
+  }
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfanNWZXJzaW9uIiwicmVxdWlyZSIsImNoZWNrQ3BwVmVyc2lvbiIsImNwcFZlcnNpb24iLCJnbG9iYWwiLCJfUkVBTklNQVRFRF9WRVJTSU9OX0NQUCIsInVuZGVmaW5lZCIsIkVycm9yIiwib2siLCJtYXRjaFZlcnNpb24iLCJqc1ZlcnNpb24iLCJ2ZXJzaW9uMSIsInZlcnNpb24yIiwibWF0Y2giLCJfdmVyc2lvbjEkc3BsaXQiLCJzcGxpdCIsIl92ZXJzaW9uMSRzcGxpdDIiLCJfc2xpY2VkVG9BcnJheTIiLCJkZWZhdWx0IiwibWFqb3IxIiwibWlub3IxIiwiX3ZlcnNpb24yJHNwbGl0IiwiX3ZlcnNpb24yJHNwbGl0MiIsIm1ham9yMiIsIm1pbm9yMiJdLCJzb3VyY2VzIjpbImNoZWNrQ3BwVmVyc2lvbi50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBqc1ZlcnNpb24gfSBmcm9tICcuL2pzVmVyc2lvbic7XG5cbmV4cG9ydCBmdW5jdGlvbiBjaGVja0NwcFZlcnNpb24oKSB7XG4gIGNvbnN0IGNwcFZlcnNpb24gPSBnbG9iYWwuX1JFQU5JTUFURURfVkVSU0lPTl9DUFA7XG4gIGlmIChjcHBWZXJzaW9uID09PSB1bmRlZmluZWQpIHtcbiAgICB0aHJvdyBuZXcgRXJyb3IoXG4gICAgICBgW1JlYW5pbWF0ZWRdIENvdWxkbid0IGRldGVybWluZSB0aGUgdmVyc2lvbiBvZiB0aGUgbmF0aXZlIHBhcnQgb2YgUmVhbmltYXRlZC4gRGlkIHlvdSBmb3JnZXQgdG8gcmUtYnVpbGQgdGhlIGFwcCBhZnRlciB1cGdyYWRpbmcgcmVhY3QtbmF0aXZlLXJlYW5pbWF0ZWQ/IElmIHlvdSB1c2UgRXhwbyBHbywgeW91IG11c3QgdXNlIHRoZSBleGFjdCB2ZXJzaW9uIHdoaWNoIGlzIGJ1bmRsZWQgaW50byBFeHBvIFNESy5gXG4gICAgKTtcbiAgfVxuICBjb25zdCBvayA9IG1hdGNoVmVyc2lvbihqc1ZlcnNpb24sIGNwcFZlcnNpb24pO1xuICBpZiAoIW9rKSB7XG4gICAgdGhyb3cgbmV3IEVycm9yKFxuICAgICAgYFtSZWFuaW1hdGVkXSBNaXNtYXRjaCBiZXR3ZWVuIEphdmFTY3JpcHQgcGFydCBhbmQgbmF0aXZlIHBhcnQgb2YgUmVhbmltYXRlZCAoJHtqc1ZlcnNpb259IHZzLiAke2NwcFZlcnNpb259KS4gRGlkIHlvdSBmb3JnZXQgdG8gcmUtYnVpbGQgdGhlIGFwcCBhZnRlciB1cGdyYWRpbmcgcmVhY3QtbmF0aXZlLXJlYW5pbWF0ZWQ/IElmIHlvdSB1c2UgRXhwbyBHbywgeW91IG11c3QgZG93bmdyYWRlIHRvICR7Y3BwVmVyc2lvbn0gd2hpY2ggaXMgYnVuZGxlZCBpbnRvIEV4cG8gU0RLLmBcbiAgICApO1xuICB9XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBtYXRjaFZlcnNpb24odmVyc2lvbjE6IHN0cmluZywgdmVyc2lvbjI6IHN0cmluZykge1xuICBpZiAodmVyc2lvbjEubWF0Y2goL15cXGQrXFwuXFxkK1xcLlxcZCskLykgJiYgdmVyc2lvbjIubWF0Y2goL15cXGQrXFwuXFxkK1xcLlxcZCskLykpIHtcbiAgICAvLyB4LnkueiwgY29tcGFyZSBvbmx5IG1ham9yIGFuZCBtaW5vciwgc2tpcCBwYXRjaFxuICAgIGNvbnN0IFttYWpvcjEsIG1pbm9yMV0gPSB2ZXJzaW9uMS5zcGxpdCgnLicpO1xuICAgIGNvbnN0IFttYWpvcjIsIG1pbm9yMl0gPSB2ZXJzaW9uMi5zcGxpdCgnLicpO1xuICAgIHJldHVybiBtYWpvcjEgPT09IG1ham9yMiAmJiBtaW5vcjEgPT09IG1pbm9yMjtcbiAgfSBlbHNlIHtcbiAgICAvLyBhbHBoYSwgYmV0YSBvciByYywgY29tcGFyZSBldmVyeXRoaW5nXG4gICAgcmV0dXJuIHZlcnNpb24xID09PSB2ZXJzaW9uMjtcbiAgfVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQUEsSUFBQUEsVUFBQSxHQUFBQyxPQUFBO0FBRU8sU0FBU0MsZUFBZUEsQ0FBQSxFQUFHO0VBQ2hDLElBQU1DLFVBQVUsR0FBR0MsTUFBTSxDQUFDQyx1QkFBdUI7RUFDakQsSUFBSUYsVUFBVSxLQUFLRyxTQUFTLEVBQUU7SUFDNUIsTUFBTSxJQUFJQyxLQUFLLENBQ1osOE9BQTZPLENBQy9PO0VBQ0g7RUFDQSxJQUFNQyxFQUFFLEdBQUdDLFlBQVksQ0FBQ0Msb0JBQVMsRUFBRVAsVUFBVSxDQUFDO0VBQzlDLElBQUksQ0FBQ0ssRUFBRSxFQUFFO0lBQ1AsTUFBTSxJQUFJRCxLQUFLLENBQ1osZ0ZBQStFRyxvQkFBVSxRQUFPUCxVQUFXLDRIQUEySEEsVUFBVyxrQ0FBaUMsQ0FDcFI7RUFDSDtBQUNGO0FBRU8sU0FBU00sWUFBWUEsQ0FBQ0UsUUFBZ0IsRUFBRUMsUUFBZ0IsRUFBRTtFQUMvRCxJQUFJRCxRQUFRLENBQUNFLEtBQUssQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJRCxRQUFRLENBQUNDLEtBQUssQ0FBQyxpQkFBaUIsQ0FBQyxFQUFFO0lBRTFFLElBQUFDLGVBQUEsR0FBeUJILFFBQVEsQ0FBQ0ksS0FBSyxDQUFDLEdBQUcsQ0FBQztNQUFBQyxnQkFBQSxPQUFBQyxlQUFBLENBQUFDLE9BQUEsRUFBQUosZUFBQTtNQUFyQ0ssTUFBTSxHQUFBSCxnQkFBQTtNQUFFSSxNQUFNLEdBQUFKLGdCQUFBO0lBQ3JCLElBQUFLLGVBQUEsR0FBeUJULFFBQVEsQ0FBQ0csS0FBSyxDQUFDLEdBQUcsQ0FBQztNQUFBTyxnQkFBQSxPQUFBTCxlQUFBLENBQUFDLE9BQUEsRUFBQUcsZUFBQTtNQUFyQ0UsTUFBTSxHQUFBRCxnQkFBQTtNQUFFRSxNQUFNLEdBQUFGLGdCQUFBO0lBQ3JCLE9BQU9ILE1BQU0sS0FBS0ksTUFBTSxJQUFJSCxNQUFNLEtBQUtJLE1BQU07RUFDL0MsQ0FBQyxNQUFNO0lBRUwsT0FBT2IsUUFBUSxLQUFLQyxRQUFRO0VBQzlCO0FBQ0YifQ==

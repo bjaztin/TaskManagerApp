@@ -1,0 +1,5 @@
+7de97a5362f96b2da47cc0acd5c991a4
+module.exports = {
+      testUri:
+        "../../../assets/welcomePhoto.png"
+    };

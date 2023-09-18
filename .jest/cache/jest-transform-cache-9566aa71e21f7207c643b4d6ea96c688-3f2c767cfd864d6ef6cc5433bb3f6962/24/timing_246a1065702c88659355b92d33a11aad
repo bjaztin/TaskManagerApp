@@ -1,0 +1,101 @@
+d3bf46836472768c4c9a073bb898b66d
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.withTiming = void 0;
+var _Easing = require("../Easing");
+var _util = require("./util");
+var _worklet_2939953182829_init_data = {
+  code: "function withTiming(toValue, userConfig, callback) {\n  const {\n    defineAnimation,\n    Easing\n  } = this._closure;\n  return defineAnimation(toValue, function () {\n    'worklet';\n\n    const config = {\n      duration: 300,\n      easing: Easing.inOut(Easing.quad)\n    };\n    if (userConfig) {\n      Object.keys(userConfig).forEach(function (key) {\n        return config[key] = userConfig[key];\n      });\n    }\n    function timing(animation, now) {\n      const {\n        toValue: toValue,\n        startTime: startTime,\n        startValue: startValue\n      } = animation;\n      const runtime = now - startTime;\n      if (runtime >= config.duration) {\n        animation.startTime = 0;\n        animation.current = toValue;\n        return true;\n      }\n      const progress = animation.easing(runtime / config.duration);\n      animation.current = startValue + (toValue - startValue) * progress;\n      return false;\n    }\n    function onStart(animation, value, now, previousAnimation) {\n      if (previousAnimation && previousAnimation.type === 'timing' && previousAnimation.toValue === toValue && previousAnimation.startTime) {\n        animation.startTime = previousAnimation.startTime;\n        animation.startValue = previousAnimation.startValue;\n      } else {\n        animation.startTime = now;\n        animation.startValue = value;\n      }\n      animation.current = value;\n      if (typeof config.easing === 'object') {\n        animation.easing = config.easing.factory();\n      } else {\n        animation.easing = config.easing;\n      }\n    }\n    return {\n      type: 'timing',\n      onFrame: timing,\n      onStart: onStart,\n      progress: 0,\n      toValue: toValue,\n      startValue: 0,\n      startTime: 0,\n      easing: function () {\n        return 0;\n      },\n      current: toValue,\n      callback: callback\n    };\n  });\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/animation/timing.js",
+  sourceMap: "{\"version\":3,\"names\":[\"withTiming\",\"toValue\",\"userConfig\",\"callback\",\"defineAnimation\",\"Easing\",\"_closure\",\"config\",\"duration\",\"easing\",\"inOut\",\"quad\",\"Object\",\"keys\",\"forEach\",\"key\",\"timing\",\"animation\",\"now\",\"startTime\",\"startValue\",\"runtime\",\"current\",\"progress\",\"onStart\",\"value\",\"previousAnimation\",\"type\",\"factory\",\"onFrame\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/animation/timing.js\"],\"mappings\":\"AAEO,SAAAA,UAASA,CAAWC,OAAA,EAAOC,UAAE,EAAUC,QAAE,EAAQ;EAAA;IAAAC,eAAA;IAAAC;EAAA,SAAAC,QAAA;EAGtD,OAAOF,eAAe,CAACH,OAAO,EAAE,YAAM;IACpC,SAAS;;IAET,MAAMM,MAAM,GAAG;MACbC,QAAQ,EAAE,GAAG;MACbC,MAAM,EAAEJ,MAAM,CAACK,KAAK,CAACL,MAAM,CAACM,IAAI;IAClC,CAAC;IACD,IAAIT,UAAU,EAAE;MACdU,MAAM,CAACC,IAAI,CAACX,UAAU,CAAC,CAACY,OAAO,CAAC,UAAAC,GAAG;QAAA,OAAIR,MAAM,CAACQ,GAAG,CAAC,GAAGb,UAAU,CAACa,GAAG,CAAC;MAAA,EAAC;IACvE;IACA,SAASC,MAAMA,CAACC,SAAS,EAAEC,GAAG,EAAE;MAC9B,MAAM;QACJjB,OAAO,EAAPA,OAAO;QACPkB,SAAS,EAATA,SAAS;QACTC,UAAA,EAAAA;MACF,CAAC,GAAGH,SAAS;MACb,MAAMI,OAAO,GAAGH,GAAG,GAAGC,SAAS;MAC/B,IAAIE,OAAO,IAAId,MAAM,CAACC,QAAQ,EAAE;QAE9BS,SAAS,CAACE,SAAS,GAAG,CAAC;QACvBF,SAAS,CAACK,OAAO,GAAGrB,OAAO;QAC3B,OAAO,IAAI;MACb;MACA,MAAMsB,QAAQ,GAAGN,SAAS,CAACR,MAAM,CAACY,OAAO,GAAGd,MAAM,CAACC,QAAQ,CAAC;MAC5DS,SAAS,CAACK,OAAO,GAAGF,UAAU,GAAG,CAACnB,OAAO,GAAGmB,UAAU,IAAIG,QAAQ;MAClE,OAAO,KAAK;IACd;IACA,SAASC,OAAOA,CAACP,SAAS,EAAEQ,KAAK,EAAEP,GAAG,EAAEQ,iBAAiB,EAAE;MACzD,IAAIA,iBAAiB,IAAIA,iBAAiB,CAACC,IAAI,KAAK,QAAQ,IAAID,iBAAiB,CAACzB,OAAO,KAAKA,OAAO,IAAIyB,iBAAiB,CAACP,SAAS,EAAE;QAIpIF,SAAS,CAACE,SAAS,GAAGO,iBAAiB,CAACP,SAAS;QACjDF,SAAS,CAACG,UAAU,GAAGM,iBAAiB,CAACN,UAAU;MACrD,CAAC,MAAM;QACLH,SAAS,CAACE,SAAS,GAAGD,GAAG;QACzBD,SAAS,CAACG,UAAU,GAAGK,KAAK;MAC9B;MACAR,SAAS,CAACK,OAAO,GAAGG,KAAK;MACzB,IAAI,OAAOlB,MAAM,CAACE,MAAM,KAAK,QAAQ,EAAE;QACrCQ,SAAS,CAACR,MAAM,GAAGF,MAAM,CAACE,MAAM,CAACmB,OAAO,CAAC,CAAC;MAC5C,CAAC,MAAM;QACLX,SAAS,CAACR,MAAM,GAAGF,MAAM,CAACE,MAAM;MAClC;IACF;IACA,OAAO;MACLkB,IAAI,EAAE,QAAQ;MACdE,OAAO,EAAEb,MAAM;MACfQ,OAAO,EAAEA,OAAO;MAChBD,QAAQ,EAAE,CAAC;MACXtB,OAAO,EAAPA,OAAO;MACPmB,UAAU,EAAE,CAAC;MACbD,SAAS,EAAE,CAAC;MACZV,MAAM,EAAE,SAAAA,CAAA;QAAA,OAAM,CAAC;MAAA;MACfa,OAAO,EAAErB,OAAO;MAChBE,QAAA,EAAAA;IACF,CAAC;EACH,CAAC,CAAC;AACJ\"}"
+};
+var _worklet_14599272203650_init_data = {
+  code: "function anonymous() {\n  const {\n    Easing,\n    userConfig,\n    toValue,\n    callback\n  } = this._closure;\n  const config = {\n    duration: 300,\n    easing: Easing.inOut(Easing.quad)\n  };\n  if (userConfig) {\n    Object.keys(userConfig).forEach(function (key) {\n      return config[key] = userConfig[key];\n    });\n  }\n  function timing(animation, now) {\n    const {\n      toValue: toValue,\n      startTime: startTime,\n      startValue: startValue\n    } = animation;\n    const runtime = now - startTime;\n    if (runtime >= config.duration) {\n      animation.startTime = 0;\n      animation.current = toValue;\n      return true;\n    }\n    const progress = animation.easing(runtime / config.duration);\n    animation.current = startValue + (toValue - startValue) * progress;\n    return false;\n  }\n  function onStart(animation, value, now, previousAnimation) {\n    if (previousAnimation && previousAnimation.type === 'timing' && previousAnimation.toValue === toValue && previousAnimation.startTime) {\n      animation.startTime = previousAnimation.startTime;\n      animation.startValue = previousAnimation.startValue;\n    } else {\n      animation.startTime = now;\n      animation.startValue = value;\n    }\n    animation.current = value;\n    if (typeof config.easing === 'object') {\n      animation.easing = config.easing.factory();\n    } else {\n      animation.easing = config.easing;\n    }\n  }\n  return {\n    type: 'timing',\n    onFrame: timing,\n    onStart: onStart,\n    progress: 0,\n    toValue: toValue,\n    startValue: 0,\n    startTime: 0,\n    easing: function () {\n      return 0;\n    },\n    current: toValue,\n    callback: callback\n  };\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/animation/timing.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"Easing\",\"userConfig\",\"toValue\",\"callback\",\"_closure\",\"config\",\"duration\",\"easing\",\"inOut\",\"quad\",\"Object\",\"keys\",\"forEach\",\"key\",\"timing\",\"animation\",\"now\",\"startTime\",\"startValue\",\"runtime\",\"current\",\"progress\",\"onStart\",\"value\",\"previousAnimation\",\"type\",\"factory\",\"onFrame\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/animation/timing.js\"],\"mappings\":\"AAKkC,SAAAA,SAAMA,CAAA;EAAA;IAAAC,MAAA;IAAAC,UAAA;IAAAC,OAAA;IAAAC;EAAA,SAAAC,QAAA;EAGpC,MAAMC,MAAM,GAAG;IACbC,QAAQ,EAAE,GAAG;IACbC,MAAM,EAAEP,MAAM,CAACQ,KAAK,CAACR,MAAM,CAACS,IAAI;EAClC,CAAC;EACD,IAAIR,UAAU,EAAE;IACdS,MAAM,CAACC,IAAI,CAACV,UAAU,CAAC,CAACW,OAAO,CAAC,UAAAC,GAAG;MAAA,OAAIR,MAAM,CAACQ,GAAG,CAAC,GAAGZ,UAAU,CAACY,GAAG,CAAC;IAAA,EAAC;EACvE;EACA,SAASC,MAAMA,CAACC,SAAS,EAAEC,GAAG,EAAE;IAC9B,MAAM;MACJd,OAAO,EAAPA,OAAO;MACPe,SAAS,EAATA,SAAS;MACTC,UAAA,EAAAA;IACF,CAAC,GAAGH,SAAS;IACb,MAAMI,OAAO,GAAGH,GAAG,GAAGC,SAAS;IAC/B,IAAIE,OAAO,IAAId,MAAM,CAACC,QAAQ,EAAE;MAE9BS,SAAS,CAACE,SAAS,GAAG,CAAC;MACvBF,SAAS,CAACK,OAAO,GAAGlB,OAAO;MAC3B,OAAO,IAAI;IACb;IACA,MAAMmB,QAAQ,GAAGN,SAAS,CAACR,MAAM,CAACY,OAAO,GAAGd,MAAM,CAACC,QAAQ,CAAC;IAC5DS,SAAS,CAACK,OAAO,GAAGF,UAAU,GAAG,CAAChB,OAAO,GAAGgB,UAAU,IAAIG,QAAQ;IAClE,OAAO,KAAK;EACd;EACA,SAASC,OAAOA,CAACP,SAAS,EAAEQ,KAAK,EAAEP,GAAG,EAAEQ,iBAAiB,EAAE;IACzD,IAAIA,iBAAiB,IAAIA,iBAAiB,CAACC,IAAI,KAAK,QAAQ,IAAID,iBAAiB,CAACtB,OAAO,KAAKA,OAAO,IAAIsB,iBAAiB,CAACP,SAAS,EAAE;MAIpIF,SAAS,CAACE,SAAS,GAAGO,iBAAiB,CAACP,SAAS;MACjDF,SAAS,CAACG,UAAU,GAAGM,iBAAiB,CAACN,UAAU;IACrD,CAAC,MAAM;MACLH,SAAS,CAACE,SAAS,GAAGD,GAAG;MACzBD,SAAS,CAACG,UAAU,GAAGK,KAAK;IAC9B;IACAR,SAAS,CAACK,OAAO,GAAGG,KAAK;IACzB,IAAI,OAAOlB,MAAM,CAACE,MAAM,KAAK,QAAQ,EAAE;MACrCQ,SAAS,CAACR,MAAM,GAAGF,MAAM,CAACE,MAAM,CAACmB,OAAO,CAAC,CAAC;IAC5C,CAAC,MAAM;MACLX,SAAS,CAACR,MAAM,GAAGF,MAAM,CAACE,MAAM;IAClC;EACF;EACA,OAAO;IACLkB,IAAI,EAAE,QAAQ;IACdE,OAAO,EAAEb,MAAM;IACfQ,OAAO,EAAEA,OAAO;IAChBD,QAAQ,EAAE,CAAC;IACXnB,OAAO,EAAPA,OAAO;IACPgB,UAAU,EAAE,CAAC;IACbD,SAAS,EAAE,CAAC;IACZV,MAAM,EAAE,SAAAA,CAAA;MAAA,OAAM,CAAC;IAAA;IACfa,OAAO,EAAElB,OAAO;IAChBC,QAAA,EAAAA;EACF,CAAC;AACH\"}"
+};
+var withTiming = function () {
+  var _e = [new global.Error(), -3, -27];
+  var _f = function _f(toValue, userConfig, callback) {
+    return (0, _util.defineAnimation)(toValue, function () {
+      var _e = [new global.Error(), -5, -27];
+      var _f = function _f() {
+        var config = {
+          duration: 300,
+          easing: _Easing.Easing.inOut(_Easing.Easing.quad)
+        };
+        if (userConfig) {
+          Object.keys(userConfig).forEach(function (key) {
+            return config[key] = userConfig[key];
+          });
+        }
+        function timing(animation, now) {
+          var toValue = animation.toValue,
+            startTime = animation.startTime,
+            startValue = animation.startValue;
+          var runtime = now - startTime;
+          if (runtime >= config.duration) {
+            animation.startTime = 0;
+            animation.current = toValue;
+            return true;
+          }
+          var progress = animation.easing(runtime / config.duration);
+          animation.current = startValue + (toValue - startValue) * progress;
+          return false;
+        }
+        function onStart(animation, value, now, previousAnimation) {
+          if (previousAnimation && previousAnimation.type === 'timing' && previousAnimation.toValue === toValue && previousAnimation.startTime) {
+            animation.startTime = previousAnimation.startTime;
+            animation.startValue = previousAnimation.startValue;
+          } else {
+            animation.startTime = now;
+            animation.startValue = value;
+          }
+          animation.current = value;
+          if (typeof config.easing === 'object') {
+            animation.easing = config.easing.factory();
+          } else {
+            animation.easing = config.easing;
+          }
+        }
+        return {
+          type: 'timing',
+          onFrame: timing,
+          onStart: onStart,
+          progress: 0,
+          toValue: toValue,
+          startValue: 0,
+          startTime: 0,
+          easing: function easing() {
+            return 0;
+          },
+          current: toValue,
+          callback: callback
+        };
+      };
+      _f._closure = {
+        Easing: _Easing.Easing,
+        userConfig: userConfig,
+        toValue: toValue,
+        callback: callback
+      };
+      _f.__initData = _worklet_14599272203650_init_data;
+      _f.__workletHash = 14599272203650;
+      _f.__stackDetails = _e;
+      _f.__version = "3.3.0";
+      return _f;
+    }());
+  };
+  _f._closure = {
+    defineAnimation: _util.defineAnimation,
+    Easing: _Easing.Easing
+  };
+  _f.__initData = _worklet_2939953182829_init_data;
+  _f.__workletHash = 2939953182829;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+exports.withTiming = withTiming;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfRWFzaW5nIiwicmVxdWlyZSIsIl91dGlsIiwiX3dvcmtsZXRfMjkzOTk1MzE4MjgyOV9pbml0X2RhdGEiLCJjb2RlIiwibG9jYXRpb24iLCJzb3VyY2VNYXAiLCJfd29ya2xldF8xNDU5OTI3MjIwMzY1MF9pbml0X2RhdGEiLCJ3aXRoVGltaW5nIiwiX2UiLCJnbG9iYWwiLCJFcnJvciIsIl9mIiwidG9WYWx1ZSIsInVzZXJDb25maWciLCJjYWxsYmFjayIsImRlZmluZUFuaW1hdGlvbiIsImNvbmZpZyIsImR1cmF0aW9uIiwiZWFzaW5nIiwiRWFzaW5nIiwiaW5PdXQiLCJxdWFkIiwiT2JqZWN0Iiwia2V5cyIsImZvckVhY2giLCJrZXkiLCJ0aW1pbmciLCJhbmltYXRpb24iLCJub3ciLCJzdGFydFRpbWUiLCJzdGFydFZhbHVlIiwicnVudGltZSIsImN1cnJlbnQiLCJwcm9ncmVzcyIsIm9uU3RhcnQiLCJ2YWx1ZSIsInByZXZpb3VzQW5pbWF0aW9uIiwidHlwZSIsImZhY3RvcnkiLCJvbkZyYW1lIiwiX2Nsb3N1cmUiLCJfX2luaXREYXRhIiwiX193b3JrbGV0SGFzaCIsIl9fc3RhY2tEZXRhaWxzIiwiX192ZXJzaW9uIiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbInRpbWluZy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBFYXNpbmcsIEVhc2luZ0ZuLCBFYXNpbmdGYWN0b3J5Rm4gfSBmcm9tICcuLi9FYXNpbmcnO1xuaW1wb3J0IHsgZGVmaW5lQW5pbWF0aW9uIH0gZnJvbSAnLi91dGlsJztcbmltcG9ydCB7XG4gIEFuaW1hdGlvbixcbiAgQW5pbWF0aW9uQ2FsbGJhY2ssXG4gIFRpbWVzdGFtcCxcbiAgQW5pbWF0YWJsZVZhbHVlLFxufSBmcm9tICcuLi9jb21tb25UeXBlcyc7XG5cbmludGVyZmFjZSBUaW1pbmdDb25maWcge1xuICBkdXJhdGlvbj86IG51bWJlcjtcbiAgZWFzaW5nPzogRWFzaW5nRm4gfCBFYXNpbmdGYWN0b3J5Rm47XG59XG5cbmV4cG9ydCBpbnRlcmZhY2UgVGltaW5nQW5pbWF0aW9uIGV4dGVuZHMgQW5pbWF0aW9uPFRpbWluZ0FuaW1hdGlvbj4ge1xuICB0eXBlOiBzdHJpbmc7XG4gIGVhc2luZzogRWFzaW5nRm47XG4gIHN0YXJ0VmFsdWU6IEFuaW1hdGFibGVWYWx1ZTtcbiAgc3RhcnRUaW1lOiBUaW1lc3RhbXA7XG4gIHByb2dyZXNzOiBudW1iZXI7XG4gIHRvVmFsdWU6IEFuaW1hdGFibGVWYWx1ZTtcbiAgY3VycmVudDogQW5pbWF0YWJsZVZhbHVlO1xufVxuXG5leHBvcnQgaW50ZXJmYWNlIElubmVyVGltaW5nQW5pbWF0aW9uXG4gIGV4dGVuZHMgT21pdDxUaW1pbmdBbmltYXRpb24sICd0b1ZhbHVlJyB8ICdjdXJyZW50Jz4ge1xuICB0b1ZhbHVlOiBudW1iZXI7XG4gIGN1cnJlbnQ6IG51bWJlcjtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIHdpdGhUaW1pbmcoXG4gIHRvVmFsdWU6IEFuaW1hdGFibGVWYWx1ZSxcbiAgdXNlckNvbmZpZz86IFRpbWluZ0NvbmZpZyxcbiAgY2FsbGJhY2s/OiBBbmltYXRpb25DYWxsYmFja1xuKTogQW5pbWF0aW9uPFRpbWluZ0FuaW1hdGlvbj4ge1xuICAnd29ya2xldCc7XG5cbiAgcmV0dXJuIGRlZmluZUFuaW1hdGlvbjxUaW1pbmdBbmltYXRpb24+KHRvVmFsdWUsICgpID0+IHtcbiAgICAnd29ya2xldCc7XG4gICAgY29uc3QgY29uZmlnOiBSZXF1aXJlZDxUaW1pbmdDb25maWc+ID0ge1xuICAgICAgZHVyYXRpb246IDMwMCxcbiAgICAgIGVhc2luZzogRWFzaW5nLmluT3V0KEVhc2luZy5xdWFkKSxcbiAgICB9O1xuICAgIGlmICh1c2VyQ29uZmlnKSB7XG4gICAgICBPYmplY3Qua2V5cyh1c2VyQ29uZmlnKS5mb3JFYWNoKFxuICAgICAgICAoa2V5KSA9PlxuICAgICAgICAgICgoY29uZmlnIGFzIGFueSlba2V5XSA9IHVzZXJDb25maWdba2V5IGFzIGtleW9mIHR5cGVvZiB1c2VyQ29uZmlnXSlcbiAgICAgICk7XG4gICAgfVxuXG4gICAgZnVuY3Rpb24gdGltaW5nKGFuaW1hdGlvbjogSW5uZXJUaW1pbmdBbmltYXRpb24sIG5vdzogVGltZXN0YW1wKTogYm9vbGVhbiB7XG4gICAgICBjb25zdCB7IHRvVmFsdWUsIHN0YXJ0VGltZSwgc3RhcnRWYWx1ZSB9ID0gYW5pbWF0aW9uO1xuICAgICAgY29uc3QgcnVudGltZSA9IG5vdyAtIHN0YXJ0VGltZTtcblxuICAgICAgaWYgKHJ1bnRpbWUgPj0gY29uZmlnLmR1cmF0aW9uKSB7XG4gICAgICAgIC8vIHJlc2V0IHN0YXJ0VGltZSB0byBhdm9pZCByZXVzaW5nIGZpbmlzaGVkIGFuaW1hdGlvbiBjb25maWcgaW4gYHN0YXJ0YCBtZXRob2RcbiAgICAgICAgYW5pbWF0aW9uLnN0YXJ0VGltZSA9IDA7XG4gICAgICAgIGFuaW1hdGlvbi5jdXJyZW50ID0gdG9WYWx1ZTtcbiAgICAgICAgcmV0dXJuIHRydWU7XG4gICAgICB9XG4gICAgICBjb25zdCBwcm9ncmVzcyA9IGFuaW1hdGlvbi5lYXNpbmcocnVudGltZSAvIGNvbmZpZy5kdXJhdGlvbik7XG4gICAgICBhbmltYXRpb24uY3VycmVudCA9XG4gICAgICAgIChzdGFydFZhbHVlIGFzIG51bWJlcikgKyAodG9WYWx1ZSAtIChzdGFydFZhbHVlIGFzIG51bWJlcikpICogcHJvZ3Jlc3M7XG4gICAgICByZXR1cm4gZmFsc2U7XG4gICAgfVxuXG4gICAgZnVuY3Rpb24gb25TdGFydChcbiAgICAgIGFuaW1hdGlvbjogVGltaW5nQW5pbWF0aW9uLFxuICAgICAgdmFsdWU6IG51bWJlcixcbiAgICAgIG5vdzogVGltZXN0YW1wLFxuICAgICAgcHJldmlvdXNBbmltYXRpb246IEFuaW1hdGlvbjxUaW1pbmdBbmltYXRpb24+XG4gICAgKTogdm9pZCB7XG4gICAgICBpZiAoXG4gICAgICAgIHByZXZpb3VzQW5pbWF0aW9uICYmXG4gICAgICAgIChwcmV2aW91c0FuaW1hdGlvbiBhcyBUaW1pbmdBbmltYXRpb24pLnR5cGUgPT09ICd0aW1pbmcnICYmXG4gICAgICAgIChwcmV2aW91c0FuaW1hdGlvbiBhcyBUaW1pbmdBbmltYXRpb24pLnRvVmFsdWUgPT09IHRvVmFsdWUgJiZcbiAgICAgICAgKHByZXZpb3VzQW5pbWF0aW9uIGFzIFRpbWluZ0FuaW1hdGlvbikuc3RhcnRUaW1lXG4gICAgICApIHtcbiAgICAgICAgLy8gdG8gbWFpbnRhaW4gY29udGludWl0eSBvZiB0aW1pbmcgYW5pbWF0aW9ucyB3ZSBjaGVjayBpZiB3ZSBhcmUgc3RhcnRpbmdcbiAgICAgICAgLy8gbmV3IHRpbWluZyBvdmVyIHRoZSBvbGQgb25lIHdpdGggdGhlIHNhbWUgcGFyYW1ldGVycy4gSWYgc28sIHdlIHdhbnRcbiAgICAgICAgLy8gdG8gY29weSBhbmltYXRpb24gdGltZWxpbmUgcHJvcGVydGllc1xuICAgICAgICBhbmltYXRpb24uc3RhcnRUaW1lID0gKHByZXZpb3VzQW5pbWF0aW9uIGFzIFRpbWluZ0FuaW1hdGlvbikuc3RhcnRUaW1lO1xuICAgICAgICBhbmltYXRpb24uc3RhcnRWYWx1ZSA9IChcbiAgICAgICAgICBwcmV2aW91c0FuaW1hdGlvbiBhcyBUaW1pbmdBbmltYXRpb25cbiAgICAgICAgKS5zdGFydFZhbHVlO1xuICAgICAgfSBlbHNlIHtcbiAgICAgICAgYW5pbWF0aW9uLnN0YXJ0VGltZSA9IG5vdztcbiAgICAgICAgYW5pbWF0aW9uLnN0YXJ0VmFsdWUgPSB2YWx1ZTtcbiAgICAgIH1cbiAgICAgIGFuaW1hdGlvbi5jdXJyZW50ID0gdmFsdWU7XG4gICAgICBpZiAodHlwZW9mIGNvbmZpZy5lYXNpbmcgPT09ICdvYmplY3QnKSB7XG4gICAgICAgIGFuaW1hdGlvbi5lYXNpbmcgPSBjb25maWcuZWFzaW5nLmZhY3RvcnkoKTtcbiAgICAgIH0gZWxzZSB7XG4gICAgICAgIGFuaW1hdGlvbi5lYXNpbmcgPSBjb25maWcuZWFzaW5nO1xuICAgICAgfVxuICAgIH1cblxuICAgIHJldHVybiB7XG4gICAgICB0eXBlOiAndGltaW5nJyxcbiAgICAgIG9uRnJhbWU6IHRpbWluZyxcbiAgICAgIG9uU3RhcnQ6IG9uU3RhcnQgYXMgKGFuaW1hdGlvbjogVGltaW5nQW5pbWF0aW9uLCBub3c6IG51bWJlcikgPT4gYm9vbGVhbixcbiAgICAgIHByb2dyZXNzOiAwLFxuICAgICAgdG9WYWx1ZSxcbiAgICAgIHN0YXJ0VmFsdWU6IDAsXG4gICAgICBzdGFydFRpbWU6IDAsXG4gICAgICBlYXNpbmc6ICgpID0+IDAsXG4gICAgICBjdXJyZW50OiB0b1ZhbHVlLFxuICAgICAgY2FsbGJhY2ssXG4gICAgfSBhcyBUaW1pbmdBbmltYXRpb247XG4gIH0pO1xufVxuIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUEsSUFBQUEsT0FBQSxHQUFBQyxPQUFBO0FBQ0EsSUFBQUMsS0FBQSxHQUFBRCxPQUFBO0FBQXdDLElBQUFFLGdDQUFBO0VBQUFDLElBQUE7RUFBQUMsUUFBQTtFQUFBQyxTQUFBO0FBQUE7QUFBQSxJQUFBQyxpQ0FBQTtFQUFBSCxJQUFBO0VBQUFDLFFBQUE7RUFBQUMsU0FBQTtBQUFBO0FBQUEsSUE2QnhCRSxVQUFVO0VBQUEsSUFBQUMsRUFBQSxRQUFBQyxNQUFBLENBQUFDLEtBQUE7RUFBQSxJQUFBQyxFQUFBLFlBQUFBLEdBQ3hCQyxPQUF3QixFQUN4QkMsVUFBeUIsRUFDekJDLFFBQTRCLEVBQ0E7SUFHNUIsT0FBTyxJQUFBQyxxQkFBZSxFQUFrQkgsT0FBTztNQUFBLElBQUFKLEVBQUEsUUFBQUMsTUFBQSxDQUFBQyxLQUFBO01BQUEsSUFBQUMsRUFBQSxZQUFBQSxHQUFBLEVBQVE7UUFFckQsSUFBTUssTUFBOEIsR0FBRztVQUNyQ0MsUUFBUSxFQUFFLEdBQUc7VUFDYkMsTUFBTSxFQUFFQyxjQUFNLENBQUNDLEtBQUssQ0FBQ0QsY0FBTSxDQUFDRSxJQUFJO1FBQ2xDLENBQUM7UUFDRCxJQUFJUixVQUFVLEVBQUU7VUFDZFMsTUFBTSxDQUFDQyxJQUFJLENBQUNWLFVBQVUs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

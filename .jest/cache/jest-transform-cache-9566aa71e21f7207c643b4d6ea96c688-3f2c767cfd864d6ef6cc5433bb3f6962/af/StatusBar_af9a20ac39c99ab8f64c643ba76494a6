@@ -1,0 +1,68 @@
+b577743a074b11bd4731b30ee4fb6426
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _exportNames = {
+  setStatusBarBackgroundColor: true,
+  setStatusBarNetworkActivityIndicatorVisible: true,
+  setStatusBarHidden: true,
+  setStatusBarStyle: true,
+  setStatusBarTranslucent: true,
+  StatusBar: true
+};
+Object.defineProperty(exports, "StatusBar", {
+  enumerable: true,
+  get: function get() {
+    return _ExpoStatusBar.default;
+  }
+});
+Object.defineProperty(exports, "setStatusBarBackgroundColor", {
+  enumerable: true,
+  get: function get() {
+    return _setStatusBarBackgroundColor.default;
+  }
+});
+Object.defineProperty(exports, "setStatusBarHidden", {
+  enumerable: true,
+  get: function get() {
+    return _setStatusBarHidden.default;
+  }
+});
+Object.defineProperty(exports, "setStatusBarNetworkActivityIndicatorVisible", {
+  enumerable: true,
+  get: function get() {
+    return _setStatusBarNetworkActivityIndicatorVisible.default;
+  }
+});
+Object.defineProperty(exports, "setStatusBarStyle", {
+  enumerable: true,
+  get: function get() {
+    return _setStatusBarStyle.default;
+  }
+});
+Object.defineProperty(exports, "setStatusBarTranslucent", {
+  enumerable: true,
+  get: function get() {
+    return _setStatusBarTranslucent.default;
+  }
+});
+var _StatusBar = require("./StatusBar.types");
+Object.keys(_StatusBar).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _StatusBar[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _StatusBar[key];
+    }
+  });
+});
+var _setStatusBarBackgroundColor = _interopRequireDefault(require("./setStatusBarBackgroundColor"));
+var _setStatusBarNetworkActivityIndicatorVisible = _interopRequireDefault(require("./setStatusBarNetworkActivityIndicatorVisible"));
+var _setStatusBarHidden = _interopRequireDefault(require("./setStatusBarHidden"));
+var _setStatusBarStyle = _interopRequireDefault(require("./setStatusBarStyle"));
+var _setStatusBarTranslucent = _interopRequireDefault(require("./setStatusBarTranslucent"));
+var _ExpoStatusBar = _interopRequireDefault(require("./ExpoStatusBar"));
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfU3RhdHVzQmFyIiwicmVxdWlyZSIsIk9iamVjdCIsImtleXMiLCJmb3JFYWNoIiwia2V5IiwicHJvdG90eXBlIiwiaGFzT3duUHJvcGVydHkiLCJjYWxsIiwiX2V4cG9ydE5hbWVzIiwiZXhwb3J0cyIsImRlZmluZVByb3BlcnR5IiwiZW51bWVyYWJsZSIsImdldCIsIl9zZXRTdGF0dXNCYXJCYWNrZ3JvdW5kQ29sb3IiLCJfaW50ZXJvcFJlcXVpcmVEZWZhdWx0IiwiX3NldFN0YXR1c0Jhck5ldHdvcmtBY3Rpdml0eUluZGljYXRvclZpc2libGUiLCJfc2V0U3RhdHVzQmFySGlkZGVuIiwiX3NldFN0YXR1c0JhclN0eWxlIiwiX3NldFN0YXR1c0JhclRyYW5zbHVjZW50IiwiX0V4cG9TdGF0dXNCYXIiXSwic291cmNlcyI6WyIuLi9zcmMvU3RhdHVzQmFyLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vU3RhdHVzQmFyLnR5cGVzJztcbmV4cG9ydCB7IGRlZmF1bHQgYXMgc2V0U3RhdHVzQmFyQmFja2dyb3VuZENvbG9yIH0gZnJvbSAnLi9zZXRTdGF0dXNCYXJCYWNrZ3JvdW5kQ29sb3InO1xuZXhwb3J0IHsgZGVmYXVsdCBhcyBzZXRTdGF0dXNCYXJOZXR3b3JrQWN0aXZpdHlJbmRpY2F0b3JWaXNpYmxlIH0gZnJvbSAnLi9zZXRTdGF0dXNCYXJOZXR3b3JrQWN0aXZpdHlJbmRpY2F0b3JWaXNpYmxlJztcbmV4cG9ydCB7IGRlZmF1bHQgYXMgc2V0U3RhdHVzQmFySGlkZGVuIH0gZnJvbSAnLi9zZXRTdGF0dXNCYXJIaWRkZW4nO1xuZXhwb3J0IHsgZGVmYXVsdCBhcyBzZXRTdGF0dXNCYXJTdHlsZSB9IGZyb20gJy4vc2V0U3RhdHVzQmFyU3R5bGUnO1xuZXhwb3J0IHsgZGVmYXVsdCBhcyBzZXRTdGF0dXNCYXJUcmFuc2x1Y2VudCB9IGZyb20gJy4vc2V0U3RhdHVzQmFyVHJhbnNsdWNlbnQnO1xuZXhwb3J0IHsgZGVmYXVsdCBhcyBTdGF0dXNCYXIgfSBmcm9tICcuL0V4cG9TdGF0dXNCYXInO1xuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxJQUFBQSxVQUFBLEdBQUFDLE9BQUE7QUFBQUMsTUFBQSxDQUFBQyxJQUFBLENBQUFILFVBQUEsRUFBQUksT0FBQSxXQUFBQyxHQUFBO0VBQUEsSUFBQUEsR0FBQSxrQkFBQUEsR0FBQTtFQUFBLElBQUFILE1BQUEsQ0FBQUksU0FBQSxDQUFBQyxjQUFBLENBQUFDLElBQUEsQ0FBQUMsWUFBQSxFQUFBSixHQUFBO0VBQUEsSUFBQUEsR0FBQSxJQUFBSyxPQUFBLElBQUFBLE9BQUEsQ0FBQUwsR0FBQSxNQUFBTCxVQUFBLENBQUFLLEdBQUE7RUFBQUgsTUFBQSxDQUFBUyxjQUFBLENBQUFELE9BQUEsRUFBQUwsR0FBQTtJQUFBTyxVQUFBO0lBQUFDLEdBQUEsV0FBQUEsSUFBQTtNQUFBLE9BQUFiLFVBQUEsQ0FBQUssR0FBQTtJQUFBO0VBQUE7QUFBQTtBQUNBLElBQUFTLDRCQUFBLEdBQUFDLHNCQUFBLENBQUFkLE9BQUE7QUFDQSxJQUFBZSw0Q0FBQSxHQUFBRCxzQkFBQSxDQUFBZCxPQUFBO0FBQ0EsSUFBQWdCLG1CQUFBLEdBQUFGLHNCQUFBLENBQUFkLE9BQUE7QUFDQSxJQUFBaUIsa0JBQUEsR0FBQUgsc0JBQUEsQ0FBQWQsT0FBQTtBQUNBLElBQUFrQix3QkFBQSxHQUFBSixzQkFBQSxDQUFBZCxPQUFBO0FBQ0EsSUFBQW1CLGNBQUEsR0FBQUwsc0JBQUEsQ0FBQWQsT0FBQSJ9

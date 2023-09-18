@@ -1,0 +1,5 @@
+02f5a61a890007591e71fe5ddb4b49df
+module.exports = {
+      testUri:
+        "../../react-native-calendars/src/calendar/img/next.png"
+    };

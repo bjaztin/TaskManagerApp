@@ -1,0 +1,126 @@
+e70577b7d47c38bc957af22944867129
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+var _core = require("../core");
+var _FrameCallbackRegistryUI = require("./FrameCallbackRegistryUI");
+function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+var _worklet_1576767499040_init_data = {
+  code: "function anonymous() {\n  const {\n    callback,\n    callbackId\n  } = this._closure;\n  global._frameCallbackRegistry.registerFrameCallback(callback, callbackId);\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/frameCallback/FrameCallbackRegistryJS.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"callback\",\"callbackId\",\"_closure\",\"global\",\"_frameCallbackRegistry\",\"registerFrameCallback\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/frameCallback/FrameCallbackRegistryJS.js\"],\"mappings\":\"AAgBY,SAAAA,SAAMA,CAAA;EAAA;IAAAC,QAAA;IAAAC;EAAA,SAAAC,QAAA;EACZC,MAAM,CAACC,sBAAsB,CAACC,qBAAqB,CAACL,QAAQ,EAAEC,UAAU,CAAC;AAC3E\"}"
+};
+var _worklet_13070694797489_init_data = {
+  code: "function anonymous() {\n  const {\n    callbackId\n  } = this._closure;\n  global._frameCallbackRegistry.unregisterFrameCallback(callbackId);\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/frameCallback/FrameCallbackRegistryJS.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"callbackId\",\"_closure\",\"global\",\"_frameCallbackRegistry\",\"unregisterFrameCallback\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/frameCallback/FrameCallbackRegistryJS.js\"],\"mappings\":\"AAsBY,SAAAA,SAAMA,CAAA;EAAA;IAAAC;EAAA,SAAAC,QAAA;EACZC,MAAM,CAACC,sBAAsB,CAACC,uBAAuB,CAACJ,UAAU,CAAC;AACnE\"}"
+};
+var _worklet_995036106431_init_data = {
+  code: "function anonymous() {\n  const {\n    callbackId,\n    state\n  } = this._closure;\n  global._frameCallbackRegistry.manageStateFrameCallback(callbackId, state);\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/frameCallback/FrameCallbackRegistryJS.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"callbackId\",\"state\",\"_closure\",\"global\",\"_frameCallbackRegistry\",\"manageStateFrameCallback\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/frameCallback/FrameCallbackRegistryJS.js\"],\"mappings\":\"AA2BY,SAAAA,SAAMA,CAAA;EAAA;IAAAC,UAAA;IAAAC;EAAA,SAAAC,QAAA;EACZC,MAAM,CAACC,sBAAsB,CAACC,wBAAwB,CAACL,UAAU,EAAEC,KAAK,CAAC;AAC3E\"}"
+};
+var FrameCallbackRegistryJS = function () {
+  function FrameCallbackRegistryJS() {
+    (0, _classCallCheck2.default)(this, FrameCallbackRegistryJS);
+    _defineProperty(this, "nextCallbackId", 0);
+    (0, _FrameCallbackRegistryUI.prepareUIRegistry)();
+  }
+  (0, _createClass2.default)(FrameCallbackRegistryJS, [{
+    key: "registerFrameCallback",
+    value: function registerFrameCallback(callback) {
+      if (!callback) {
+        return -1;
+      }
+      var callbackId = this.nextCallbackId;
+      this.nextCallbackId++;
+      (0, _core.runOnUI)(function () {
+        var _e = [new global.Error(), -3, -27];
+        var _f = function _f() {
+          global._frameCallbackRegistry.registerFrameCallback(callback, callbackId);
+        };
+        _f._closure = {
+          callback: callback,
+          callbackId: callbackId
+        };
+        _f.__initData = _worklet_1576767499040_init_data;
+        _f.__workletHash = 1576767499040;
+        _f.__stackDetails = _e;
+        _f.__version = "3.3.0";
+        return _f;
+      }())();
+      return callbackId;
+    }
+  }, {
+    key: "unregisterFrameCallback",
+    value: function unregisterFrameCallback(callbackId) {
+      (0, _core.runOnUI)(function () {
+        var _e = [new global.Error(), -2, -27];
+        var _f = function _f() {
+          global._frameCallbackRegistry.unregisterFrameCallback(callbackId);
+        };
+        _f._closure = {
+          callbackId: callbackId
+        };
+        _f.__initData = _worklet_13070694797489_init_data;
+        _f.__workletHash = 13070694797489;
+        _f.__stackDetails = _e;
+        _f.__version = "3.3.0";
+        return _f;
+      }())();
+    }
+  }, {
+    key: "manageStateFrameCallback",
+    value: function manageStateFrameCallback(callbackId, state) {
+      (0, _core.runOnUI)(function () {
+        var _e = [new global.Error(), -3, -27];
+        var _f = function _f() {
+          global._frameCallbackRegistry.manageStateFrameCallback(callbackId, state);
+        };
+        _f._closure = {
+          callbackId: callbackId,
+          state: state
+        };
+        _f.__initData = _worklet_995036106431_init_data;
+        _f.__workletHash = 995036106431;
+        _f.__stackDetails = _e;
+        _f.__version = "3.3.0";
+        return _f;
+      }())();
+    }
+  }]);
+  return FrameCallbackRegistryJS;
+}();
+exports.default = FrameCallbackRegistryJS;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfY29yZSIsInJlcXVpcmUiLCJfRnJhbWVDYWxsYmFja1JlZ2lzdHJ5VUkiLCJGcmFtZUNhbGxiYWNrUmVnaXN0cnlKUyIsIl9jbGFzc0NhbGxDaGVjazIiLCJkZWZhdWx0IiwiX2RlZmluZVByb3BlcnR5IiwicHJlcGFyZVVJUmVnaXN0cnkiLCJfY3JlYXRlQ2xhc3MyIiwia2V5IiwidmFsdWUiLCJyZWdpc3RlckZyYW1lQ2FsbGJhY2siLCJjYWxsYmFjayIsImNhbGxiYWNrSWQiLCJuZXh0Q2FsbGJhY2tJZCIsInJ1bk9uVUkiLCJfZSIsImdsb2JhbCIsIkVycm9yIiwiX2YiLCJfZnJhbWVDYWxsYmFja1JlZ2lzdHJ5IiwiX2Nsb3N1cmUiLCJ1bnJlZ2lzdGVyRnJhbWVDYWxsYmFjayIsIm1hbmFnZVN0YXRlRnJhbWVDYWxsYmFjayIsInN0YXRlIiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIkZyYW1lQ2FsbGJhY2tSZWdpc3RyeUpTLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHJ1bk9uVUkgfSBmcm9tICcuLi9jb3JlJztcbmltcG9ydCB7IEZyYW1lSW5mbywgcHJlcGFyZVVJUmVnaXN0cnkgfSBmcm9tICcuL0ZyYW1lQ2FsbGJhY2tSZWdpc3RyeVVJJztcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgRnJhbWVDYWxsYmFja1JlZ2lzdHJ5SlMge1xuICBwcml2YXRlIG5leHRDYWxsYmFja0lkID0gMDtcblxuICBjb25zdHJ1Y3RvcigpIHtcbiAgICBwcmVwYXJlVUlSZWdpc3RyeSgpO1xuICB9XG5cbiAgcmVnaXN0ZXJGcmFtZUNhbGxiYWNrKGNhbGxiYWNrOiAoZnJhbWVJbmZvOiBGcmFtZUluZm8pID0+IHZvaWQpOiBudW1iZXIge1xuICAgIGlmICghY2FsbGJhY2spIHtcbiAgICAgIHJldHVybiAtMTtcbiAgICB9XG5cbiAgICBjb25zdCBjYWxsYmFja0lkID0gdGhpcy5uZXh0Q2FsbGJhY2tJZDtcbiAgICB0aGlzLm5leHRDYWxsYmFja0lkKys7XG5cbiAgICBydW5PblVJKCgpID0+IHtcbiAgICAgIGdsb2JhbC5fZnJhbWVDYWxsYmFja1JlZ2lzdHJ5LnJlZ2lzdGVyRnJhbWVDYWxsYmFjayhjYWxsYmFjaywgY2FsbGJhY2tJZCk7XG4gICAgfSkoKTtcblxuICAgIHJldHVybiBjYWxsYmFja0lkO1xuICB9XG5cbiAgdW5yZWdpc3RlckZyYW1lQ2FsbGJhY2soY2FsbGJhY2tJZDogbnVtYmVyKTogdm9pZCB7XG4gICAgcnVuT25VSSgoKSA9PiB7XG4gICAgICBnbG9iYWwuX2ZyYW1lQ2FsbGJhY2tSZWdpc3RyeS51bnJlZ2lzdGVyRnJhbWVDYWxsYmFjayhjYWxsYmFja0lkKTtcbiAgICB9KSgpO1xuICB9XG5cbiAgbWFuYWdlU3RhdGVGcmFtZUNhbGxiYWNrKGNhbGxiYWNrSWQ6IG51bWJlciwgc3RhdGU6IGJvb2xlYW4pOiB2b2lkIHtcbiAgICBydW5PblVJKCgpID0+IHtcbiAgICAgIGdsb2JhbC5fZnJhbWVDYWxsYmFja1JlZ2lzdHJ5Lm1hbmFnZVN0YXRlRnJhbWVDYWxsYmFjayhjYWxsYmFja0lkLCBzdGF0ZSk7XG4gICAgfSkoKTtcbiAgfVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQUEsSUFBQUEsS0FBQSxHQUFBQyxPQUFBO0FBQ0EsSUFBQUMsd0JBQUEsR0FBQUQsT0FBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7SUFFcUJFLHVCQUF1QjtFQUcxQyxTQUFBQSx3QkFBQSxFQUFjO0lBQUEsSUFBQUMsZ0JBQUEsQ0FBQUMsT0FBQSxRQUFBRix1QkFBQTtJQUFBRyxlQUFBLHlCQUZXLENBQUM7SUFHeEIsSUFBQUMsMENBQWlCLEdBQUU7RUFDckI7RUFBQSxJQUFBQyxhQUFBLENBQUFILE9BQUEsRUFBQUYsdUJBQUE7SUFBQU0sR0FBQTtJQUFBQyxLQUFBLEVBRUEsU0FBQUMsc0JBQXNCQyxRQUF3QyxFQUFVO01BQ3RFLElBQUksQ0FBQ0EsUUFBUSxFQUFFO1FBQ2IsT0FBTyxDQUFDLENBQUM7TUFDWDtNQUVBLElBQU1DLFVBQVUsR0FBRyxJQUFJLENBQUNDLGNBQWM7TUFDdEMsSUFBSSxDQUFDQSxjQUFjLEVBQUU7TUFFckIsSUFBQUMsYUFBTztRQUFBLElBQUFDLEVBQUEsUUFBQUMsTUFBQSxDQUFBQyxLQUFBO1FBQUEsSUFBQUMsRUFBQSxZQUFBQSxHQUFBLEVBQU87VUFDWkYsTUFBTSxDQUFDRyxzQkFBc0IsQ0FBQ1QscUJBQXFCLENBQUNDLFFBQVEsRUFBRUMsVUFBVSxDQUFDO1FBQzNFLENBQUM7UUFBQU0sRUFBQSxDQUFBRSxRQUFBO1VBQUFULFFBQUEsRTs7Ozs7Ozs7U0FBQSxDQUFDLEVBQUU7TUFFSixPQUFPQyxVQUFVO0lBQ25CO0VBQUE7SUFBQUosR0FBQTtJQUFBQyxLQUFBLEVBRUEsU0FBQVksd0JBQXdCVCxVQUFrQixFQUFRO01BQ2hELElBQUFFLGFBQU87UUFBQSxJQUFBQyxFQUFBLFFBQUFDLE1BQUEsQ0FBQUMsS0FBQTtRQUFBLElBQUFDLEVBQUEsWUFBQUEsR0FBQSxFQUFPO1VBQ1pGLE1BQU0sQ0FBQ0csc0JBQXNCLENBQUNFLHVCQUF1QixDQUFDVCxVQUFVLENBQUM7UUFDbkUsQ0FBQztRQUFBTSxFQUFBLENBQUFFLFFBQUE7VUFBQVIsVUFBQSxFOzs7Ozs7O1NBQUEsQ0FBQyxFQUFFO0lBQ047RUFBQTtJQUFBSixHQUFBO0lBQUFDLEtBQUEsRUFFQSxTQUFBYSx5QkFBeUJWLFVBQWtCLEVBQUVXLEtBQWMsRUFBUTtNQUNqRSxJQUFBVCxhQUFPO1FBQUEsSUFBQUMsRUFBQSxRQUFBQyxNQUFBLENBQUFDLEtBQUE7UUFBQSxJQUFBQyxFQUFBLFlBQUFBLEdBQUEsRUFBTztVQUNaRixNQUFNLENBQUNHLHNCQUFzQixDQUFDRyx3QkFBd0IsQ0FBQ1YsVUFBVSxFQUFFVyxLQUFLLENBQUM7UUFDM0UsQ0FBQztRQUFBTCxFQUFBLENBQUFFLFFBQUE7VUFBQVIsVUFBQSxFOzs7Ozs7OztTQUFBLENBQUMsRUFBRTtJQUNOO0VBQUE7RUFBQSxPQUFBVix1QkFBQTtBQUFBO0FBQUFzQixPQUFBLENBQUFwQixPQUFBLEdBQUFGLHVCQUFBIn0=

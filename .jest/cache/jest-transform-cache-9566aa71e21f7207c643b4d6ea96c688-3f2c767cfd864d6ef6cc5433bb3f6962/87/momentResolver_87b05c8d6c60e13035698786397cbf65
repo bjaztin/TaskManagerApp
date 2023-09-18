@@ -1,0 +1,16 @@
+f6dae4c3f8ce1ad8efe670501b7cd56f
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getMoment = void 0;
+var moment;
+var getMoment = function getMoment() {
+  if (!moment) {
+    try {
+      moment = require('moment');
+    } catch (_unused) {}
+  }
+  return moment;
+};
+exports.getMoment = getMoment;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtb21lbnQiLCJnZXRNb21lbnQiLCJyZXF1aXJlIiwiX3VudXNlZCIsImV4cG9ydHMiXSwic291cmNlcyI6WyJtb21lbnRSZXNvbHZlci5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJsZXQgbW9tZW50O1xuLy8gTW9tZW50IGlzIGFuIG9wdGlvbmFsIGRlcGVuZGVuY3lcbmV4cG9ydCBjb25zdCBnZXRNb21lbnQgPSAoKSA9PiB7XG4gICAgaWYgKCFtb21lbnQpIHtcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICAgIG1vbWVudCA9IHJlcXVpcmUoJ21vbWVudCcpO1xuICAgICAgICB9XG4gICAgICAgIGNhdGNoIHtcbiAgICAgICAgICAgIC8vIE1vbWVudCBpcyBub3QgYXZhaWxhYmxlXG4gICAgICAgIH1cbiAgICB9XG4gICAgcmV0dXJuIG1vbWVudDtcbn07XG4iXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxJQUFJQSxNQUFNO0FBRUgsSUFBTUMsU0FBUyxHQUFHLFNBQVpBLFNBQVNBLENBQUEsRUFBUztFQUMzQixJQUFJLENBQUNELE1BQU0sRUFBRTtJQUNULElBQUk7TUFDQUEsTUFBTSxHQUFHRSxPQUFPLENBQUMsUUFBUSxDQUFDO0lBQzlCLENBQUMsQ0FDRCxPQUFBQyxPQUFBLEVBQU0sQ0FFTjtFQUNKO0VBQ0EsT0FBT0gsTUFBTTtBQUNqQixDQUFDO0FBQUNJLE9BQUEsQ0FBQUgsU0FBQSxHQUFBQSxTQUFBIn0=

@@ -1,0 +1,173 @@
+0984538366b5790c6299c25461af5ddf
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useAnimatedSensor = useAnimatedSensor;
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+var _react = require("react");
+var _core = require("../core");
+var _commonTypes = require("../commonTypes");
+var _threads = require("../threads");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+var _worklet_16207379104934_init_data = {
+  code: "function eulerToQuaternion(pitch, roll, yaw) {\n  const c1 = Math.cos(pitch / 2);\n  const s1 = Math.sin(pitch / 2);\n  const c2 = Math.cos(roll / 2);\n  const s2 = Math.sin(roll / 2);\n  const c3 = Math.cos(yaw / 2);\n  const s3 = Math.sin(yaw / 2);\n  return [s1 * c2 * c3 - c1 * s2 * s3, c1 * s2 * c3 + s1 * c2 * s3, c1 * c2 * s3 + s1 * s2 * c3, c1 * c2 * c3 - s1 * s2 * s3];\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"eulerToQuaternion\",\"pitch\",\"roll\",\"yaw\",\"c1\",\"Math\",\"cos\",\"s1\",\"sin\",\"c2\",\"s2\",\"c3\",\"s3\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js\"],\"mappings\":\"AAKA,SAAAA,kBAAAC,KAAA,EAAAC,IAAA,EAAAC,GAAA;EAAA,MAAAC,EAAA,GAAAC,IAAA,CAAAC,GAAA,CAAAL,KAAA;EACA,MAAAM,EAAA,GAAAF,IAAA,CAAAG,GAAA,CAAAP,KAAA;EACA,MAAAQ,EAAS,GAAAJ,IAAA,CAAAC,GAAA,CAAAJ,IAAiB,GAAC;EAGzB,MAAMQ,EAAE,GAAGL,IAAI,CAACG,GAAG,CAACN,IAAA,GAAK,CAAG,CAAC;EAC7B,MAAMS,EAAE,GAAGN,IAAI,CAACC,GAAG,CAACH,GAAA,GAAK,EAAG;EAC5B,MAAMS,EAAE,GAAGP,IAAI,CAACG,GAAG,CAACL,GAAA,GAAI,CAAG,CAAC;EAC5B,OAAM,CAAEI,EAAA,GAAGE,EAAI,GAACE,EAAI,GAAAP,EAAI,GAAIM,EAAC,GAAAE,EAAA,EAAAR,EAAA,GAAAM,EAAA,GAAAC,EAAA,GAAAJ,EAAA,GAAAE,EAAA,GAAAG,EAAA,EAAAR,EAAA,GAAAK,EAAA,GAAAG,EAAA,GAAAL,EAAA,GAAAG,EAAA,GAAAC,EAAA,EAAAP,EAAA,GAAAK,EAAA,GAAAE,EAAA,GAAAJ,EAAA,GAAAG,EAAA,GAAAE,EAAA\"}"
+};
+var eulerToQuaternion = function () {
+  var _e = [new global.Error(), 1, -27];
+  var _f = function _f(pitch, roll, yaw) {
+    var c1 = Math.cos(pitch / 2);
+    var s1 = Math.sin(pitch / 2);
+    var c2 = Math.cos(roll / 2);
+    var s2 = Math.sin(roll / 2);
+    var c3 = Math.cos(yaw / 2);
+    var s3 = Math.sin(yaw / 2);
+    return [s1 * c2 * c3 - c1 * s2 * s3, c1 * s2 * c3 + s1 * c2 * s3, c1 * c2 * s3 + s1 * s2 * c3, c1 * c2 * c3 - s1 * s2 * s3];
+  };
+  _f._closure = {};
+  _f.__initData = _worklet_16207379104934_init_data;
+  _f.__workletHash = 16207379104934;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_4985018991112_init_data = {
+  code: "function adjustRotationToInterfaceOrientation(data) {\n  const {\n    eulerToQuaternion\n  } = this._closure;\n  const {\n    interfaceOrientation: interfaceOrientation,\n    pitch: pitch,\n    roll: roll,\n    yaw: yaw\n  } = data;\n  if (interfaceOrientation === 90) {\n    data.pitch = roll;\n    data.roll = -pitch;\n    data.yaw = yaw - Math.PI / 2;\n  } else if (interfaceOrientation === 270) {\n    data.pitch = -roll;\n    data.roll = pitch;\n    data.yaw = yaw + Math.PI / 2;\n  } else if (interfaceOrientation === 180) {\n    data.pitch *= -1;\n    data.roll *= -1;\n    data.yaw *= -1;\n  }\n  const q = eulerToQuaternion(data.pitch, data.roll, data.yaw);\n  data.qx = q[0];\n  data.qy = q[1];\n  data.qz = q[2];\n  data.qw = q[3];\n  return data;\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"adjustRotationToInterfaceOrientation\",\"data\",\"eulerToQuaternion\",\"_closure\",\"interfaceOrientation\",\"pitch\",\"roll\",\"yaw\",\"Math\",\"PI\",\"q\",\"qx\",\"qy\",\"qz\",\"qw\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js\"],\"mappings\":\"AAkBA,SAAAA,oCAASA,CAAqCC,IAAA,EAAI;EAAA;IAAAC;EAAA,SAAAC,QAAA;EAGhD,MAAM;IACJC,oBAAoB,EAApBA,oBAAoB;IACpBC,KAAK,EAALA,KAAK;IACLC,IAAI,EAAJA,IAAI;IACJC,GAAA,EAAAA;EACF,CAAC,GAAGN,IAAI;EACR,IAAIG,oBAAoB,KAAK,EAAE,EAAE;IAC/BH,IAAI,CAACI,KAAK,GAAGC,IAAI;IACjBL,IAAI,CAACK,IAAI,GAAG,CAACD,KAAK;IAClBJ,IAAI,CAACM,GAAG,GAAGA,GAAG,GAAGC,IAAI,CAACC,EAAE,GAAG,CAAC;EAC9B,CAAC,MAAM,IAAIL,oBAAoB,KAAK,GAAG,EAAE;IACvCH,IAAI,CAACI,KAAK,GAAG,CAACC,IAAI;IAClBL,IAAI,CAACK,IAAI,GAAGD,KAAK;IACjBJ,IAAI,CAACM,GAAG,GAAGA,GAAG,GAAGC,IAAI,CAACC,EAAE,GAAG,CAAC;EAC9B,CAAC,MAAM,IAAIL,oBAAoB,KAAK,GAAG,EAAE;IACvCH,IAAI,CAACI,KAAK,IAAI,CAAC,CAAC;IAChBJ,IAAI,CAACK,IAAI,IAAI,CAAC,CAAC;IACfL,IAAI,CAACM,GAAG,IAAI,CAAC,CAAC;EAChB;EACA,MAAMG,CAAC,GAAGR,iBAAiB,CAACD,IAAI,CAACI,KAAK,EAAEJ,IAAI,CAACK,IAAI,EAAEL,IAAI,CAACM,GAAG,CAAC;EAC5DN,IAAI,CAACU,EAAE,GAAGD,CAAC,CAAC,CAAC,CAAC;EACdT,IAAI,CAACW,EAAE,GAAGF,CAAC,CAAC,CAAC,CAAC;EACdT,IAAI,CAACY,EAAE,GAAGH,CAAC,CAAC,CAAC,CAAC;EACdT,IAAI,CAACa,EAAE,GAAGJ,CAAC,CAAC,CAAC,CAAC;EACd,OAAOT,IAAI;AACb\"}"
+};
+var adjustRotationToInterfaceOrientation = function () {
+  var _e = [new global.Error(), -2, -27];
+  var _f = function _f(data) {
+    var interfaceOrientation = data.interfaceOrientation,
+      pitch = data.pitch,
+      roll = data.roll,
+      yaw = data.yaw;
+    if (interfaceOrientation === 90) {
+      data.pitch = roll;
+      data.roll = -pitch;
+      data.yaw = yaw - Math.PI / 2;
+    } else if (interfaceOrientation === 270) {
+      data.pitch = -roll;
+      data.roll = pitch;
+      data.yaw = yaw + Math.PI / 2;
+    } else if (interfaceOrientation === 180) {
+      data.pitch *= -1;
+      data.roll *= -1;
+      data.yaw *= -1;
+    }
+    var q = eulerToQuaternion(data.pitch, data.roll, data.yaw);
+    data.qx = q[0];
+    data.qy = q[1];
+    data.qz = q[2];
+    data.qw = q[3];
+    return data;
+  };
+  _f._closure = {
+    eulerToQuaternion: eulerToQuaternion
+  };
+  _f.__initData = _worklet_4985018991112_init_data;
+  _f.__workletHash = 4985018991112;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_12606310302424_init_data = {
+  code: "function adjustVectorToInterfaceOrientation(data) {\n  const {\n    interfaceOrientation: interfaceOrientation,\n    x: x,\n    y: y\n  } = data;\n  if (interfaceOrientation === 90) {\n    data.x = -y;\n    data.y = x;\n  } else if (interfaceOrientation === 270) {\n    data.x = y;\n    data.y = -x;\n  } else if (interfaceOrientation === 180) {\n    data.x *= -1;\n    data.y *= -1;\n  }\n  return data;\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"adjustVectorToInterfaceOrientation\",\"data\",\"interfaceOrientation\",\"x\",\"y\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js\"],\"mappings\":\"AA+CA,SAAAA,kCAASA,CAAmCC,IAAA,EAAI;EAG9C,MAAM;IACJC,oBAAoB,EAApBA,oBAAoB;IACpBC,CAAC,EAADA,CAAC;IACDC,CAAA,EAAAA;EACF,CAAC,GAAGH,IAAI;EACR,IAAIC,oBAAoB,KAAK,EAAE,EAAE;IAC/BD,IAAI,CAACE,CAAC,GAAG,CAACC,CAAC;IACXH,IAAI,CAACG,CAAC,GAAGD,CAAC;EACZ,CAAC,MAAM,IAAID,oBAAoB,KAAK,GAAG,EAAE;IACvCD,IAAI,CAACE,CAAC,GAAGC,CAAC;IACVH,IAAI,CAACG,CAAC,GAAG,CAACD,CAAC;EACb,CAAC,MAAM,IAAID,oBAAoB,KAAK,GAAG,EAAE;IACvCD,IAAI,CAACE,CAAC,IAAI,CAAC,CAAC;IACZF,IAAI,CAACG,CAAC,IAAI,CAAC,CAAC;EACd;EACA,OAAOH,IAAI;AACb\"}"
+};
+var adjustVectorToInterfaceOrientation = function () {
+  var _e = [new global.Error(), 1, -27];
+  var _f = function _f(data) {
+    var interfaceOrientation = data.interfaceOrientation,
+      x = data.x,
+      y = data.y;
+    if (interfaceOrientation === 90) {
+      data.x = -y;
+      data.y = x;
+    } else if (interfaceOrientation === 270) {
+      data.x = y;
+      data.y = -x;
+    } else if (interfaceOrientation === 180) {
+      data.x *= -1;
+      data.y *= -1;
+    }
+    return data;
+  };
+  _f._closure = {};
+  _f.__initData = _worklet_12606310302424_init_data;
+  _f.__workletHash = 12606310302424;
+  _f.__stackDetails = _e;
+  _f.__version = "3.3.0";
+  return _f;
+}();
+var _worklet_16054857555903_init_data = {
+  code: "function anonymous(data) {\n  const {\n    adjustToInterfaceOrientation,\n    sensorType,\n    SensorType,\n    adjustRotationToInterfaceOrientation,\n    adjustVectorToInterfaceOrientation,\n    sensorData,\n    callMicrotasks\n  } = this._closure;\n  if (adjustToInterfaceOrientation) {\n    if (sensorType === SensorType.ROTATION) {\n      data = adjustRotationToInterfaceOrientation(data);\n    } else {\n      data = adjustVectorToInterfaceOrientation(data);\n    }\n  }\n  sensorData.value = data;\n  callMicrotasks();\n}",
+  location: "/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js",
+  sourceMap: "{\"version\":3,\"names\":[\"anonymous\",\"data\",\"adjustToInterfaceOrientation\",\"sensorType\",\"SensorType\",\"adjustRotationToInterfaceOrientation\",\"adjustVectorToInterfaceOrientation\",\"sensorData\",\"callMicrotasks\",\"_closure\",\"ROTATION\",\"value\"],\"sources\":[\"/Users/bjaztin/Desktop/taskManagerApp/node_modules/react-native-reanimated/lib/module/reanimated2/hook/useAnimatedSensor.js\"],\"mappings\":\"AA0FkD,SAAAA,SAAQA,CAAAC,IAAA;EAAA;IAAAC,4BAAA;IAAAC,UAAA;IAAAC,UAAA;IAAAC,oCAAA;IAAAC,kCAAA;IAAAC,UAAA;IAAAC;EAAA,SAAAC,QAAA;EAGpD,IAAIP,4BAA4B,EAAE;IAChC,IAAIC,UAAU,KAAKC,UAAU,CAACM,QAAQ,EAAE;MACtCT,IAAI,GAAGI,oCAAoC,CAACJ,IAAI,CAAC;IACnD,CAAC,MAAM;MACLA,IAAI,GAAGK,kCAAkC,CAACL,IAAI,CAAC;IACjD;EACF;EACAM,UAAU,CAACI,KAAK,GAAGV,IAAI;EACvBO,cAAc,CAAC,CAAC;AAClB\"}"
+};
+function useAnimatedSensor(sensorType, userConfig) {
+  var config = _objectSpread({
+    interval: 'auto',
+    adjustToInterfaceOrientation: true,
+    iosReferenceFrame: _commonTypes.IOSReferenceFrame.Auto
+  }, userConfig);
+  var ref = (0, _react.useRef)({
+    sensor: (0, _core.initializeSensor)(sensorType, config),
+    unregister: function unregister() {},
+    isAvailable: false,
+    config: config
+  });
+  (0, _react.useEffect)(function () {
+    var newConfig = _objectSpread(_objectSpread({}, config), userConfig);
+    ref.current.sensor = (0, _core.initializeSensor)(sensorType, newConfig);
+    var sensorData = ref.current.sensor;
+    var adjustToInterfaceOrientation = ref.current.config.adjustToInterfaceOrientation;
+    var id = (0, _core.registerSensor)(sensorType, config, function () {
+      var _e = [new global.Error(), -8, -27];
+      var _f = function _f(data) {
+        if (adjustToInterfaceOrientation) {
+          if (sensorType === _commonTypes.SensorType.ROTATION) {
+            data = adjustRotationToInterfaceOrientation(data);
+          } else {
+            data = adjustVectorToInterfaceOrientation(data);
+          }
+        }
+        sensorData.value = data;
+        (0, _threads.callMicrotasks)();
+      };
+      _f._closure = {
+        adjustToInterfaceOrientation: adjustToInterfaceOrientation,
+        sensorType: sensorType,
+        SensorType: _commonTypes.SensorType,
+        adjustRotationToInterfaceOrientation: adjustRotationToInterfaceOrientation,
+        adjustVectorToInterfaceOrientation: adjustVectorToInterfaceOrientation,
+        sensorData: sensorData,
+        callMicrotasks: _threads.callMicrotasks
+      };
+      _f.__initData = _worklet_16054857555903_init_data;
+      _f.__workletHash = 16054857555903;
+      _f.__stackDetails = _e;
+      _f.__version = "3.3.0";
+      return _f;
+    }());
+    if (id !== -1) {
+      ref.current.unregister = function () {
+        return (0, _core.unregisterSensor)(id);
+      };
+      ref.current.isAvailable = true;
+    } else {
+      ref.current.unregister = function () {};
+      ref.current.isAvailable = false;
+    }
+    return function () {
+      ref.current.unregister();
+    };
+  }, [sensorType, userConfig]);
+  return ref.current;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfcmVhY3QiLCJyZXF1aXJlIiwiX2NvcmUiLCJfY29tbW9uVHlwZXMiLCJfdGhyZWFkcyIsIm93bktleXMiLCJlIiwiciIsInQiLCJPYmplY3QiLCJrZXlzIiwiZ2V0T3duUHJvcGVydHlTeW1ib2xzIiwibyIsImZpbHRlciIsImdldE93blByb3BlcnR5RGVzY3JpcHRvciIsImVudW1lcmFibGUiLCJwdXNoIiwiYXBwbHkiLCJfb2JqZWN0U3ByZWFkIiwiYXJndW1lbnRzIiwibGVuZ3RoIiwiZm9yRWFjaCIsIl9kZWZpbmVQcm9wZXJ0eTIiLCJkZWZhdWx0IiwiZ2V0T3duUHJvcGVydHlEZXNjcmlwdG9ycyIsImRlZmluZVByb3BlcnRpZXMiLCJkZWZpbmVQcm9wZXJ0eSIsIl93b3JrbGV0XzE2MjA3Mzc5MTA0OTM0X2luaXRfZGF0YSIsImNvZGUiLCJsb2NhdGlvbiIsInNvdXJjZU1hcCIsImV1bGVyVG9RdWF0ZXJuaW9uIiwiX2UiLCJnbG9iYWwiLCJFcnJvciIsIl9mIiwicGl0Y2giLCJyb2xsIiwieWF3IiwiYzEiLCJNYXRoIiwiY29zIiwiczEiLCJzaW4iLCJjMiIsInMyIiwiYzMiLCJzMyIsIl9jbG9zdXJlIiwiX19pbml0RGF0YSIsIl9fd29ya2xldEhhc2giLCJfX3N0YWNrRGV0YWlscyIsIl9fdmVyc2lvbiIsIl93b3JrbGV0XzQ5ODUwMTg5OTExMTJfaW5pdF9kYXRhIiwiYWRqdXN0Um90YXRpb25Ub0ludGVyZmFjZU9yaWVudGF0aW9uIiwiZGF0YSIsImludGVyZmFjZU9yaWVudGF0aW9uIiwiUEkiLCJxIiwicXgiLCJxeSIsInF6IiwicXciLCJhZGp1c3RWZWN0b3JUb0ludGVyZmFjZU9yaWVudGF0aW9uIiwieCIsInkiLCJfd29ya2xldF8xMjYwNjMxMDMwMjQyNF9pbml0X2RhdGEiLCJfd29ya2xldF8xNjA1NDg1NzU1NTkwM19pbml0X2RhdGEiLCJ1c2VBbmltYXRlZFNlbnNvciIsInNlbnNvclR5cGUiLCJ1c2VyQ29uZmlnIiwiY29uZmlnIiwiaW50ZXJ2YWwiLCJhZGp1c3RUb0ludGVyZmFjZU9yaWVudGF0aW9uIiwiaW9zUmVmZXJlbmNlRnJhbWUiLCJJT1NSZWZlcmVuY2VGcmFtZSIsIkF1dG8iLCJyZWYiLCJ1c2VSZWYiLCJzZW5zb3IiLCJpbml0aWFsaXplU2Vuc29yIiwidW5yZWdpc3RlciIsImlzQXZhaWxhYmxlIiwidXNlRWZmZWN0IiwibmV3Q29uZmlnIiwiY3VycmVudCIsInNlbnNvckRhdGEiLCJpZCIsInJlZ2lzdGVyU2Vuc29yIiwiU2Vuc29yVHlwZSIsIlJPVEFUSU9OIiwidmFsdWUiLCJjYWxsTWljcm90YXNrcyIsInVucmVnaXN0ZXJTZW5zb3IiXSwic291cmNlcyI6WyJ1c2VBbmltYXRlZFNlbnNvci50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VFZmZlY3QsIHVzZVJlZiB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IGluaXRpYWxpemVTZW5zb3IsIHJlZ2lzdGVyU2Vuc29yLCB1bnJlZ2lzdGVyU2Vuc29yIH0gZnJvbSAnLi4vY29yZSc7XG5pbXBvcnQge1xuICBTZW5zb3JUeXBlLFxuICBJT1NSZWZlcmVuY2VGcmFtZSxcbiAgU2Vuc29yQ29uZmlnLFxuICBBbmltYXRlZFNlbnNvcixcbiAgVmFsdWUzRCxcbiAgVmFsdWVSb3RhdGlvbixcbn0gZnJvbSAnLi4vY29tbW9uVHlwZXMnO1xuaW1wb3J0IHsgY2FsbE1pY3JvdGFza3MgfSBmcm9tICcuLi90aHJlYWRzJztcblxuLy8gZXVsZXIgYW5nbGVzIGFyZSBpbiBvcmRlciBaWFksIHogPSB5YXcsIHggPSBwaXRjaCwgeSA9IHJvbGxcbi8vIGh0dHBzOi8vZ2l0aHViLmNvbS9tcmRvb2IvdGhyZWUuanMvYmxvYi9kZXYvc3JjL21hdGgvUXVhdGVybmlvbi5qcyNMMjM3XG5mdW5jdGlvbiBldWxlclRvUXVhdGVybmlvbihwaXRjaDogbnVtYmVyLCByb2xsOiBudW1iZXIsIHlhdzogbnVtYmVyKSB7XG4gICd3b3JrbGV0JztcbiAgY29uc3QgYzEgPSBNYXRoLmNvcyhwaXRjaCAvIDIpO1xuICBjb25zdCBzMSA9IE1hdGguc2luKHBpdGNoIC8gMik7XG4gIGNvbnN0IGMyID0gTWF0aC5jb3Mocm9sbCAvIDIpO1xuICBjb25zdCBzMiA9IE1hdGguc2luKHJvbGwgLyAyKTtcbiAgY29uc3QgYzMgPSBNYXRoLmNvcyh5YXcgLyAyKTtcbiAgY29uc3QgczMgPSBNYXRoLnNpbih5YXcgLyAyKTtcblxuICByZXR1cm4gW1xuICAgIHMxICogYzIgKiBjMyAtIGMxICogczIgKiBzMyxcbiAgICBjMSAqIHMyICogYzMgKyBzMSAqIGMyICogczMsXG4gICAgYzEgKiBjMiAqIHMzICsgczEgKiBzMiAqIGMzLFxuICAgIGMxICogYzIgKiBjMyAtIHMxICogczIgKiBzMyxcbiAgXTtcbn1cblxuZnVuY3Rpb24gYWRqdXN0Um90YXRpb25Ub0ludGVyZmFjZU9yaWVudGF0aW9uKGRhdGE6IFZhbHVlUm90YXRpb24pIHtcbiAgJ3dvcmtsZXQnO1xuICBjb25zdCB7IGludGVyZmFjZU9yaWVudGF0aW9uLCBwaXRjaCwgcm9sbCwgeWF3IH0gPSBkYXRhO1xuICBpZiAoaW50ZXJmYWNlT3JpZW50YXRpb24gPT09IDkwKSB7XG4gICAgZGF0YS5waXRjaCA9IHJvbGw7XG4gICAgZGF0YS5yb2xsID0gLXBpdGNoO1xuICAgIGRhdGEueWF3ID0geWF3IC0gTWF0aC5QSSAvIDI7XG4gIH0gZWxzZSBpZiAoaW50ZXJmYWNlT3JpZW50YXRpb24gPT09IDI3MCkge1xuICAgIGRhdGEucGl0Y2ggPSAtcm9sbDtcbiAgICBkYXRhLnJvbGwgPSBwaXRjaDtcbiAgICBkYXRhLnlhdyA9IHlhdyArIE1hdGguUEkgLyAyO1xuICB9IGVsc2UgaWYgKGludGVyZmFjZU9yaWVudGF0aW9uID09PSAxODApIHtcbiAgICBkYXRhLnBpdGNoICo9IC0xO1xuICAgIGRhdGEucm9sbCAqPSAtMTtcbiAgICBkYXRhLnlhdyAqPSAtMTtcbiAgfVxuXG4gIGNvbnN0IHEgPSBldWxlclRvUXVhdGVybmlvbihkYXRhLnBpdGNoLCBkYXRhLnJvbGwsIGRhdGEueWF3KTtcbiAgZGF0YS5xeCA9IHFbMF07XG4gIGRhdGEucXkgPSBxWzFdO1xuICBkYXRhLnF6ID0gcVsyXTtcbiAgZGF0YS5xdyA9IHFbM107XG4gIHJldHVybiBkYXRhO1xufVxuXG5mdW5jdGlvbiBhZGp1c3RWZWN0b3JUb0ludGVyZmFjZU9yaWVudGF0aW9uKGRhdGE6IFZhbHVlM0QpIHtcbiAgJ3dvcmtsZXQnO1xuICBjb25zdCB7IGludGVyZmFjZU9yaWVudGF0aW9uLCB4LCB5IH0gPSBkYXRhO1xuICBpZiAoaW50ZXJmYWNlT3JpZW50YXRpb24gPT09IDkwKSB7XG4gICAgZGF0YS54ID0gLXk7XG4gICAgZGF0YS55ID0geDtcbiAgfSBlbHNlIGlmIChpbnRlcmZhY2VPcmllbnRhdGlvbiA9PT0gMjcwKSB7XG4gICAgZGF0YS54ID0geTtcbiAgICBkYXRhLnkgPSAteDtcbiAgfSBlbHNlIGlmIChpbnRlcmZhY2VPcmllbnRhdGlvbiA9PT0gMTgwKSB7XG4gICAgZGF0YS54ICo9IC0xO1xuICAgIGRhdGEueSAqPSAtMTtcbiAgfVxuICByZXR1cm4gZGF0YTtcbn1cblxuZXhwb3J0IGZ1bmN0aW9uIHVzZUFuaW1hdGVkU2Vuc29yKFxuICBzZW5zb3JUeXBlOiBTZW5zb3JUeXBlLFxuICB1c2VyQ29uZmlnPzogUGFydGlhbDxTZW5zb3JDb25maWc+XG4pOiBBbmltYXRlZFNlbnNvciB7XG4gIGNvbnN0IGNvbmZpZzogU2Vuc29yQ29uZmlnID0ge1xuICAgIGludGVydmFsOiAnYXV0bycsXG4gICAgYWRqdXN0VG9JbnRlcmZhY2VPcmllbnRhdGlvbjogdHJ1ZSxcbiAgICBpb3NSZWZlcmVuY2VGcmFtZTogSU9TUmVmZXJlbmNlRnJhbWUuQXV0byxcbiAgICAuLi51c2VyQ29uZmlnLFxuICB9O1xuICBjb25zdCByZWYgPSB1c2VSZWY8QW5pbWF0ZWRTZW5zb3I+KHtcbiAgICBzZW5zb3I6IGluaXRpYWxpemVTZW5zb3Ioc2Vuc29yVHlwZSwgY29uZmlnKSxcbiAgICB1bnJlZ2lzdGVyOiAoKSA9PiB7XG4gICAgICAvLyBOT09QXG4gICAgfSxcbiAgICBpc0F2YWlsYWJsZTogZmFsc2UsXG4gICAgY29uZmlnOiBjb25maWcsXG4gIH0pO1xuXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgY29uc3QgbmV3Q29uZmlnID0ge1xuICAgICAgLi4uY29uZmlnLFxuICAgICAgLi4udXNlckNvbmZpZyxcbiAgICB9O1xuICAgIHJlZi5jdXJyZW50LnNlbnNvciA9IGluaXRpYWxpemVTZW5zb3Ioc2Vuc29yVHlwZSwgbmV3Q29uZmlnKTtcblxuICAgIGNvbnN0IHNlbnNvckRhdGEgPSByZWYuY3VycmVudC5zZW5zb3I7XG4gICAgY29uc3QgYWRqdXN0VG9JbnRlcmZhY2VPcmllbnRhdGlvbiA9XG4gICAgICByZWYuY3VycmVudC5jb25maWcuYWRqdXN0VG9JbnRlcmZhY2VPcmllbnRhdGlvbjtcblxuICAgIGNvbnN0IGlkID0gcmVnaXN0ZXJTZW5zb3Ioc2Vuc29yVHlwZSwgY29uZmlnLCAoZGF0YSkgPT4ge1xuICAgICAgJ3dvcmtsZXQnO1xuICAgICAgaWYgKGFkanVzdFRvSW50ZXJmYWNlT3JpZW50YXRpb24pIHtcbiAgICAgICAgaWYgKHNlbnNvclR5cGUgPT09IFNlbnNvclR5cGUuUk9UQVRJT04pIHtcbiAgICAgICAgICBkYXRhID0gYWRqdXN0Um90YXRpb25Ub0ludGVyZmFjZU9yaWVudGF0aW9uKGRhdGEgYXMgVmFsdWVSb3RhdGlvbik7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgZGF0YSA9IGFkanVzdFZlY3RvclRvSW50ZXJmYWNlT3JpZW50YXRpb24oZGF0YSBhcyBWYWx1ZTNEKTtcbiAgICAgICAgfVxuICAgICAgfVxuICAgICAgc2Vuc29yRGF0YS52YWx1ZSA9IGRhdGE7XG4gICAgICBjYWxsTWljcm90YXNrcygpO1xuICAgIH0pO1xuXG4gICAgaWYgKGlkICE9PSAtMSkge1xuICAgICAgLy8gaWYgc2Vuc29yIGlzIGF2YWlsYWJsZVxuICAgICAgcmVmLmN1cnJlbnQudW5yZWdpc3RlciA9ICgpID0+IHVucmVnaXN0ZXJTZW5zb3IoaWQpO1xuICAgICAgcmVmLmN1cnJlbnQuaXNBdmFpbGFibGUgPSB0cnVlO1xuICAgIH0gZWxzZSB7XG4gICAgICAvLyBpZiBzZW5zb3IgaXMgdW5hdmFpbGFibGVcbiAgICAgIHJlZi5jdXJyZW50LnVucmVnaXN0ZXIgPSAoKSA9PiB7XG4gICAgICAgIC8vIE5PT1BcbiAgICAgIH07XG4gICAgICByZWYuY3VycmVudC5pc0F2YWlsYWJsZSA9IGZhbHNlO1xuICAgIH1cblxuICAgIHJldHVybiAoKSA9PiB7XG4gICAgICByZWYuY3VycmVudC51bnJlZ2lzdGVyKCk7XG4gICAgfTtcbiAgfSwgW3NlbnNvclR5cGUsIHVzZXJDb25maWddKTtcblxuICByZXR1cm4gcmVmLmN1cnJlbnQ7XG59XG4iXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBLElBQUFBLE1BQUEsR0FBQUMsT0FBQTtBQUNBLElBQUFDLEtBQUEsR0FBQUQsT0FBQTtBQUNBLElBQUFFLFlBQUEsR0FBQUYsT0FBQTtBQVFBLElBQUFHLFFBQUEsR0FBQUgsT0FBQTtBQUEyQyxTQUFBSSxRQUFBQyxDQUFBLEVBQUFDLENBQUEsUUFBQUMsQ0FBQSxHQUFBQyxNQUFBLENBQUFDLElBQUEsQ0FBQUosQ0FBQSxPQUFBRyxNQUFBLENBQUFFLHFCQUFBLFFBQUFDLENBQUEsR0FBQUgsTUFBQSxDQUFBRSxxQkFBQSxDQUFBTCxDQUFBLEdBQUFDLENBQUEsS0FBQUssQ0FBQSxHQUFBQSxDQUFBLENBQUFDLE1BQUEsV0FBQU4sQ0FBQSxXQUFBRSxNQUFBLENBQUFLLHdCQUFBLENBQUFSLENBQUEsRUFBQUMsQ0FBQSxFQUFBUSxVQUFBLE9BQUFQLENBQUEsQ0FBQVEsSUFBQSxDQUFBQyxLQUFBLENBQUFULENBQUEsRUFBQUksQ0FBQSxZQUFBSixDQUFBO0FBQUEsU0FBQVUsY0FBQVosQ0FBQSxhQUFBQyxDQUFBLE1BQUFBLENBQUEsR0FBQVksU0FBQSxDQUFBQyxN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

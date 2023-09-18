@@ -1,0 +1,178 @@
+a1b97e65e11f28d0a1933bdd97b4e02f
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getContent = getContent;
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+function cov_2renw6w1f2() {
+  var path = "/Users/bjaztin/Desktop/taskManagerApp/src/utilities/Content.js";
+  var hash = "e05b3d1190555ca4418e7d88d9684d7df2c24950";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/bjaztin/Desktop/taskManagerApp/src/utilities/Content.js",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 2
+        },
+        end: {
+          line: 2,
+          column: 176
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 2
+        },
+        end: {
+          line: 14,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 19
+        },
+        end: {
+          line: 6,
+          column: 35
+        }
+      },
+      "3": {
+        start: {
+          line: 7,
+          column: 17
+        },
+        end: {
+          line: 7,
+          column: 38
+        }
+      },
+      "4": {
+        start: {
+          line: 9,
+          column: 4
+        },
+        end: {
+          line: 9,
+          column: 51
+        }
+      },
+      "5": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 24
+        }
+      },
+      "6": {
+        start: {
+          line: 12,
+          column: 4
+        },
+        end: {
+          line: 12,
+          column: 25
+        }
+      },
+      "7": {
+        start: {
+          line: 13,
+          column: 4
+        },
+        end: {
+          line: 13,
+          column: 14
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "getContent",
+        decl: {
+          start: {
+            line: 4,
+            column: 22
+          },
+          end: {
+            line: 4,
+            column: 32
+          }
+        },
+        loc: {
+          start: {
+            line: 4,
+            column: 35
+          },
+          end: {
+            line: 15,
+            column: 1
+          }
+        },
+        line: 4
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "e05b3d1190555ca4418e7d88d9684d7df2c24950"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    cov_2renw6w1f2 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2renw6w1f2();
+var url = (cov_2renw6w1f2().s[0]++, "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLgdxvG3UlbicDUrlxlbsrTY_gfY0Wyx2a&key=AIzaSyDEjpzg6DdhkX5j9MnScPHOfKH3_YzfVWQ");
+function getContent() {
+  return _getContent.apply(this, arguments);
+}
+function _getContent() {
+  _getContent = (0, _asyncToGenerator2.default)(function* () {
+    cov_2renw6w1f2().f[0]++;
+    cov_2renw6w1f2().s[1]++;
+    try {
+      var response = (cov_2renw6w1f2().s[2]++, yield fetch(url));
+      var result = (cov_2renw6w1f2().s[3]++, yield response.json());
+      cov_2renw6w1f2().s[4]++;
+      console.log("This is the data:", result.items);
+      cov_2renw6w1f2().s[5]++;
+      return result.items;
+    } catch (error) {
+      cov_2renw6w1f2().s[6]++;
+      console.error(error);
+      cov_2renw6w1f2().s[7]++;
+      return [];
+    }
+  });
+  return _getContent.apply(this, arguments);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJ1cmwiLCJjb3ZfMnJlbnc2dzFmMiIsInMiLCJnZXRDb250ZW50IiwiX2dldENvbnRlbnQiLCJhcHBseSIsImFyZ3VtZW50cyIsIl9hc3luY1RvR2VuZXJhdG9yMiIsImRlZmF1bHQiLCJmIiwicmVzcG9uc2UiLCJmZXRjaCIsInJlc3VsdCIsImpzb24iLCJjb25zb2xlIiwibG9nIiwiaXRlbXMiLCJlcnJvciJdLCJzb3VyY2VzIjpbIkNvbnRlbnQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgdXJsID1cbiAgXCJodHRwczovL3lvdXR1YmUuZ29vZ2xlYXBpcy5jb20veW91dHViZS92My9wbGF5bGlzdEl0ZW1zP3BhcnQ9c25pcHBldCZtYXhSZXN1bHRzPTEwJnBsYXlsaXN0SWQ9UExnZHh2RzNVbGJpY0RVcmx4bGJzclRZX2dmWTBXeXgyYSZrZXk9QUl6YVN5REVqcHpnNkRkaGtYNWo5TW5TY1BIT2ZLSDNfWXpmVldRXCI7XG5cbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBnZXRDb250ZW50KCkge1xuICB0cnkge1xuICAgIGxldCByZXNwb25zZSA9IGF3YWl0IGZldGNoKHVybCk7XG4gICAgbGV0IHJlc3VsdCA9IGF3YWl0IHJlc3BvbnNlLmpzb24oKTtcblxuICAgIGNvbnNvbGUubG9nKFwiVGhpcyBpcyB0aGUgZGF0YTpcIiwgcmVzdWx0Lml0ZW1zKTtcbiAgICByZXR1cm4gcmVzdWx0Lml0ZW1zO1xuICB9IGNhdGNoIChlcnJvcikge1xuICAgIGNvbnNvbGUuZXJyb3IoZXJyb3IpO1xuICAgIHJldHVybiBbXTtcbiAgfVxufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLElBQU1BLEdBQUcsSUFBQUMsY0FBQSxHQUFBQyxDQUFBLE9BQ1AsOEtBQThLO0FBQUMsU0FFM0pDLFVBQVVBLENBQUE7RUFBQSxPQUFBQyxXQUFBLENBQUFDLEtBQUEsT0FBQUMsU0FBQTtBQUFBO0FBQUEsU0FBQUYsWUFBQTtFQUFBQSxXQUFBLE9BQUFHLGtCQUFBLENBQUFDLE9BQUEsRUFBekIsYUFBNEI7SUFBQVAsY0FBQSxHQUFBUSxDQUFBO0lBQUFSLGNBQUEsR0FBQUMsQ0FBQTtJQUNqQyxJQUFJO01BQ0YsSUFBSVEsUUFBUSxJQUFBVCxjQUFBLEdBQUFDLENBQUEsYUFBU1MsS0FBSyxDQUFDWCxHQUFHLENBQUM7TUFDL0IsSUFBSVksTUFBTSxJQUFBWCxjQUFBLEdBQUFDLENBQUEsYUFBU1EsUUFBUSxDQUFDRyxJQUFJLENBQUMsQ0FBQztNQUFDWixjQUFBLEdBQUFDLENBQUE7TUFFbkNZLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDLG1CQUFtQixFQUFFSCxNQUFNLENBQUNJLEtBQUssQ0FBQztNQUFDZixjQUFBLEdBQUFDLENBQUE7TUFDL0MsT0FBT1UsTUFBTSxDQUFDSSxLQUFLO0lBQ3JCLENBQUMsQ0FBQyxPQUFPQyxLQUFLLEVBQUU7TUFBQWhCLGNBQUEsR0FBQUMsQ0FBQTtNQUNkWSxPQUFPLENBQUNHLEtBQUssQ0FBQ0EsS0FBSyxDQUFDO01BQUNoQixjQUFBLEdBQUFDLENBQUE7TUFDckIsT0FBTyxFQUFFO0lBQ1g7RUFDRixDQUFDO0VBQUEsT0FBQUUsV0FBQSxDQUFBQyxLQUFBLE9BQUFDLFNBQUE7QUFBQSJ9

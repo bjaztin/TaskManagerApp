@@ -1,0 +1,1 @@
+{"version":3,"names":["initializeApp","jest","fn","exports"],"sources":["firebaseApp.js"],"sourcesContent":["export const initializeApp = jest.fn();\n"],"mappings":";;;;AAAO,IAAMA,aAAa,GAAGC,IAAI,CAACC,EAAE,CAAC,CAAC;AAACC,OAAA,CAAAH,aAAA,GAAAA,aAAA"}
