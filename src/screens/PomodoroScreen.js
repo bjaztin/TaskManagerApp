@@ -12,10 +12,10 @@ import { Audio } from "expo-av";
 
 const PomodoroScreen = () => {
   const intervals = [
-    { name: "Focus", duration: 1 },
-    { name: "Short Break", duration: 1 },
-    { name: "Focus", duration: 1 },
-    { name: "Long Break", duration: 1 },
+    { name: "Focus", duration: 25 },
+    { name: "Short Break", duration: 5 },
+    { name: "Focus", duration: 25 },
+    { name: "Long Break", duration: 10 },
   ];
 
   const [currentInterval, setCurrentInterval] = useState(0);
