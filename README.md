@@ -14,5 +14,6 @@ Email: admin@gmail.com
 Password: password123
 
 ### To run the unit tests 
-- Install the jest by running this command 'npm install --save-dev jest' or 'npm install --save-dev jest --force'
 - Run 'npm test' command to run the test
+- If there is a need to install jest, you can run this command 'npm install --save-dev jest' or 'npm install --save-dev jest --force' if neccessary.
+
