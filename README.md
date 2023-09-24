@@ -8,8 +8,9 @@
 - Run 'npm install' command in the terminal or 'npm install --force' command to fix the peer dependency conflicts if neccessary.
 - Install the neccessary dependencies if needed.
 - Download Expo Go App
-- Run 'expo start' command in the terminal to start the metro bundler and wait for the QR code to be generated.
+- Run 'expo start' command in the terminal to start the  Metro Bunder and wait for the QR code to be generated.
 - Access the app through scanning the QR code with Expo Go (Android device) or the Camera app on iOS device and open the Expo Go app.
+- Wait for the Metro Bunder to load the app.
 
 ### You can use these credentials to sign in to the app directly
 
