@@ -11,7 +11,7 @@
 - Run 'expo start' command in the terminal to start the  Metro Bunder and wait for the QR code to be generated.
 - Access the app through scanning the QR code with the Camera app on iOS device and open the Expo Go app or by pressing 'i' to open iOS simulator with Xcode.
 - Wait for the Metro Bunder to be complete.
-- Then you can now use the app through usong Expo Go or simulate the app directly on the local computer with Xcode.
+- Then you can now use the app through using Expo Go or simulate the app directly on the local computer with Xcode. (Reload the Expo Go app if neccessary for successful app launch)
 
 ### You can use these credentials to sign in to the app directly
 
