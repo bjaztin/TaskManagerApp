@@ -4,7 +4,7 @@ import React from "react";
 
 // Mocked FontAwesome5 component
 export const FontAwesome5 = (props) => {
-  return <></>; // You can return any JSX you want here
+  return <></>;
 };
 
 // Mocked MaterialCommunityIcons component
